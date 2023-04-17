@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "trello-clone": {
+    "trello-auth": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/trello-clone",
+            "outputPath": "dist/trello-auth",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "trello-clone:build:production"
+              "browserTarget": "trello-auth:build:production"
             },
             "development": {
-              "browserTarget": "trello-clone:build:development"
+              "browserTarget": "trello-auth:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "trello-clone:build"
+            "browserTarget": "trello-auth:build"
           }
         },
         "test": {
@@ -100,11 +100,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "0b440850-bc99-4ca9-b648-e1acea9486c3"
+    "analytics": "7d3b04dc-c4b8-489d-b6cf-a81ea50b0c2f",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
