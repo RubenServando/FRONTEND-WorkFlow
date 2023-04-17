@@ -7,22 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BtnComponent implements OnInit {
 
   @Input() typeBtn: 'button' | 'reset' | 'submit' = 'button';
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   @Input() color = 'primary';
-=======
->>>>>>> 43d26d22d3ad95a4f2e19b13ad3c56a59f3d21d5
->>>>>>> Stashed changes
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
   get colors() {
     return {
       'bg-success-700': this.color === 'success',
@@ -37,7 +28,4 @@ export class BtnComponent implements OnInit {
     };
   }
 
-=======
->>>>>>> 43d26d22d3ad95a4f2e19b13ad3c56a59f3d21d5
->>>>>>> Stashed changes
 }
