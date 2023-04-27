@@ -6,8 +6,10 @@ import { switchMap, tap } from 'rxjs/operators';
 import { TokenService } from '@services/token.service';
 import { MeService } from '@services/me.service';
 import { ResponseLogin } from '@models/auth.model';
+import { RespLogin } from '@models/auth.model';
 import { User } from '@models/user.model';
 import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +30,13 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<ResponseLogin>(`${this.apiUrl}/api/v1/auth/login`, {
+    return this.http.post<RespLogin>(`${this.apiUrl}/user/login`, {
       email,
       password
     })
     .pipe(
       tap(response => {
-        this.tokenService.saveToken(response.access_token);
-        this.tokenService.saveRefreshToken(response.refresh_token);
+        this.tokenService.saveToken(response.token);
       })
     );
   }
