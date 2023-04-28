@@ -1,4 +1,4 @@
-<h1 class="text-center font-bold py-2 text-gray-700">Log in to Trello</h1>
+<h1 class="text-center font-bold py-2 text-gray-700">Inicie Sesión</h1>
 <form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin()">
   <div>
     <div class="relative">
@@ -18,14 +18,12 @@
         *ngIf="form.controls.email.hasError('required')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field is mandatory
-      </p>
+      Este campo es obligatorio      </p>
       <p
         *ngIf="form.controls.email.hasError('email')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field should be a email
-      </p>
+      Debe ser un correo electrónico.      </p>
     </div>
 
   </div>
@@ -46,22 +44,19 @@
         *ngIf="form.controls.password.hasError('required')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field is mandatory
-      </p>
+      Este campo es obligatorio      </p>
       <p
         *ngIf="form.controls.password.hasError('minlength')"
         class="font-medium text-red-500 text-xs mt-1 ml-1"
       >
-        This field should be greater than 6 characters
-      </p>
+      La contraseña debe tener más de 6 caracteres      </p>
     </div>
   </div>
   <div *ngIf="status === 'failed'">
     <p
       class="font-medium text-red-500 text-xs mt-1 ml-1"
     >
-      Credentials are invalid
-    </p>
+    Email o contraseña incorrecta.    </p>
   </div>
   <div>
     <app-btn
