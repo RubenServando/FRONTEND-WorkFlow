@@ -26,33 +26,33 @@ import { ToDo, Column } from '@models/todo.model';
 export class BoardComponent {
   columns: Column[] = [
     {
-      title: 'Por hacer',
+      title: 'ToDo',
       todos: [
         {
           id: '1',
-          title: 'Recetas',
+          title: 'Make dishes',
         },
         {
           id: '2',
-          title: 'Echa una moneda al aire',
+          title: 'Buy a unicorn',
         },
       ],
     },
     {
-      title: 'En proceso',
+      title: 'Doing',
       todos: [
         {
           id: '3',
-          title: 'Cómprate un coco',
+          title: 'Watch Angular Path in Platzi',
         },
       ],
     },
     {
-      title: 'Hecho',
+      title: 'Done',
       todos: [
         {
           id: '4',
-          title: 'Pincha un globo',
+          title: 'Play video games',
         },
       ],
     },
@@ -83,7 +83,7 @@ export class BoardComponent {
 
   addColumn() {
     this.columns.push({
-      title: 'Nueva Columna',
+      title: 'New Column',
       todos: [],
     });
   }
