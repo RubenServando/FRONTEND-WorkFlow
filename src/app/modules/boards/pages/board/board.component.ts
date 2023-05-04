@@ -9,6 +9,7 @@ import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.
 
 import { ToDo, Column } from '@models/todo.model';
 
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
