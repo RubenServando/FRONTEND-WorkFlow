@@ -10,15 +10,13 @@ import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
 import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.component';
-import { BackgroundComponent } from '../auth/components/background/background.component';
 
 
 @NgModule({
   declarations: [
     BoardsComponent,
     BoardComponent,
-    TodoDialogComponent,
-    BackgroundComponent
+    TodoDialogComponent
   ],
   imports: [
     CommonModule,
