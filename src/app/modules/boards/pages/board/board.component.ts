@@ -9,6 +9,7 @@ import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.
 
 import { ToDo, Column } from '@models/todo.model';
 
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -26,33 +27,33 @@ import { ToDo, Column } from '@models/todo.model';
 export class BoardComponent {
   columns: Column[] = [
     {
-      title: 'ToDo',
+      title: 'Por hacer',
       todos: [
         {
           id: '1',
-          title: 'Make dishes',
+          title: 'Recetas',
         },
         {
           id: '2',
-          title: 'Buy a unicorn',
+          title: 'Compra un unicornio',
         },
       ],
     },
     {
-      title: 'Doing',
+      title: 'En proceso',
       todos: [
         {
           id: '3',
-          title: 'Watch Angular Path in Platzi',
+          title: 'Mirate un tutorial',
         },
       ],
     },
     {
-      title: 'Done',
+      title: 'Hecho',
       todos: [
         {
           id: '4',
-          title: 'Play video games',
+          title: 'Pincha un globo',
         },
       ],
     },
@@ -83,7 +84,7 @@ export class BoardComponent {
 
   addColumn() {
     this.columns.push({
-      title: 'New Column',
+      title: 'Nueva Columna',
       todos: [],
     });
   }

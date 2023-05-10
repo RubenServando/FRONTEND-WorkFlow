@@ -1,4 +1,4 @@
-<h1 class="text-center font-bold py-2 text-gray-700">Inicie Sesión</h1>
+<h1 class="text-center font-bold py-2 text-gray-700">Acceso a Workflow</h1>
 <form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin()">
   <div>
     <div class="relative">
@@ -16,14 +16,18 @@
     <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
       <p
         *ngIf="form.controls.email.hasError('required')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-      Este campo es obligatorio      </p>
+          <!--This field is mandatory-->
+          Este campo es obligatorio
+      </p>
       <p
         *ngIf="form.controls.email.hasError('email')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-      Debe ser un correo electrónico.      </p>
+          <!--This field is mandatory-->
+          Este campo es obligatorio
+      </p>
     </div>
 
   </div>
@@ -42,28 +46,34 @@
     <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
       <p
         *ngIf="form.controls.password.hasError('required')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-      Este campo es obligatorio      </p>
+          <!--This field is mandatory-->
+          Este campo es obligatorio
+      </p>
       <p
         *ngIf="form.controls.password.hasError('minlength')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-      La contraseña debe tener más de 6 caracteres      </p>
+          <!--This field should be greater than 6 characters-->
+          Este campo debe tener más de 6 caracteres
+      </p>
     </div>
   </div>
   <div *ngIf="status === 'failed'">
     <p
-      class="font-medium text-red-500 text-xs mt-1 ml-1"
+      class="font-medium text-gray-400 text-xs mt-1 ml-1"
     >
-    Email o contraseña incorrecta.    </p>
+      <!--Credentials are invalid-->
+      Credenciales incorrectas
+    </p>
   </div>
   <div>
     <app-btn
       typeBtn="submit"
       color="success"
       [loading]="status === 'loading'"
-      >Login</app-btn
+      >Acceso</app-btn
     >
   </div>
 </form>

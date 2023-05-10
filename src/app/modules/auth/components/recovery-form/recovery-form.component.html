@@ -21,13 +21,13 @@
     >
       <p
         *ngIf="form.controls.newPassword.hasError('required')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
         This field is mandatory
       </p>
       <p
         *ngIf="form.controls.newPassword.hasError('minlength')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
         This field should be greater than 6 characters
       </p>
@@ -50,13 +50,13 @@
     >
       <p
         *ngIf="form.controls.confirmPassword.hasError('required')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
         This field is mandatory
       </p>
       <p
         *ngIf="form.controls.confirmPassword.hasError('minlength')"
-        class="font-medium text-red-500 text-xs mt-1 ml-1"
+        class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
         This field should be greater than 6 characters
       </p>
@@ -65,7 +65,7 @@
   <div *ngIf="form.controls.confirmPassword.touched">
     <p
       *ngIf="form.hasError('mismatch')"
-      class="font-medium text-red-500 text-xs mt-1 ml-1"
+      class="font-medium text-gray-400 text-xs mt-1 ml-1"
     >
       The password are not the same
     </p>
