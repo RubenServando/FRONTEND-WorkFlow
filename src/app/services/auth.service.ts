@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   refreshToken(refreshToken: string) {
-    return this.http.post<ResponseLogin>(`${this.apiUrl}/api/v1/auth/refresh-token`, {refreshToken})
+    return this.http.post<ResponseLogin>(`${this.apiUrl}/user/refresh-token`, {refreshToken})
     .pipe(
       tap(response => {
         this.tokenService.saveToken(response.access_token);
@@ -51,31 +51,31 @@ export class AuthService {
     );;
   }
 
-  register(name: string, email: string, password: string) {
-    return this.http.post(`${this.apiUrl}/api/v1/auth/register`, {
-      name,
+  register(email: string, password: string, username: string) {
+    return this.http.post(`${this.apiUrl}/user/join`, {
       email,
-      password
+      password,
+      username
     });
   }
 
-  registerAndLogin(name: string, email: string, password: string) {
-    return this.register(name, email, password)
+  registerAndLogin(email: string, password: string, username: string) {
+    return this.register(email, password, username)
     .pipe(
       switchMap(() => this.login(email, password))
     );
   }
 
   isAvailable(email: string) {
-    return this.http.post<{isAvailable: boolean}>(`${this.apiUrl}/api/v1/auth/is-available`, {email});
+    return this.http.post<{isAvailable: boolean}>(`${this.apiUrl}/user/is_available`, {email});
   }
 
   recovery(email: string) {
-    return this.http.post(`${this.apiUrl}/api/v1/auth/recovery`, { email });
+    return this.http.post(`${this.apiUrl}/user/recovery`, { email });
   }
 
   changePassword(token: string, newPassword: string) {
-    return this.http.post(`${this.apiUrl}/api/v1/auth/change-password`, { token, newPassword });
+    return this.http.post(`${this.apiUrl}/user/change-password`, { token, newPassword });
   }
 
   getProfile() {

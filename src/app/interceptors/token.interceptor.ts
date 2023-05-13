@@ -42,7 +42,7 @@ export class TokenInterceptor implements HttpInterceptor {
     const accessToken = this.tokenService.getToken();
     if (accessToken) {
       const authRequest = request.clone({
-        headers: request.headers.set('Authorization', `Bearer ${accessToken}`)
+        headers: request.headers.set('token', accessToken)
       });
       return next.handle(authRequest);
     }
