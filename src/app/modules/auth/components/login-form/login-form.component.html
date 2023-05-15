@@ -18,18 +18,15 @@
         *ngIf="form.controls.email.hasError('required')"
         class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-          <!--This field is mandatory-->
           Este campo es obligatorio
       </p>
       <p
         *ngIf="form.controls.email.hasError('email')"
         class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-          <!--This field is mandatory-->
-          Este campo es obligatorio
+          Este debe ser un email
       </p>
     </div>
-
   </div>
   <div>
     <div class="relative">
@@ -48,15 +45,13 @@
         *ngIf="form.controls.password.hasError('required')"
         class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-          <!--This field is mandatory-->
           Este campo es obligatorio
       </p>
       <p
         *ngIf="form.controls.password.hasError('minlength')"
         class="font-medium text-gray-400 text-xs mt-1 ml-1"
       >
-          <!--This field should be greater than 6 characters-->
-          Este campo debe tener más de 6 caracteres
+          Este campo debe tener más de 8 caracteres
       </p>
     </div>
   </div>
@@ -64,7 +59,7 @@
     <p
       class="font-medium text-gray-400 text-xs mt-1 ml-1"
     >
-      <!--Credentials are invalid-->
+
       Credenciales incorrectas
     </p>
   </div>

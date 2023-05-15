@@ -18,7 +18,7 @@ export class RegisterFormComponent {
   });
 
   form = this.formBuilder.nonNullable.group({
-    name: ['', [Validators.required]],
+    username: ['', [Validators.required]],
     email: ['', [Validators.email, Validators.required]],
     password: ['', [Validators.minLength(8), Validators.required]],
     confirmPassword: ['', [Validators.required]],
@@ -41,8 +41,8 @@ export class RegisterFormComponent {
   register() {
     if (this.form.valid) {
       this.status = 'loading';
-      const { name, email, password } = this.form.getRawValue();
-      this.authService.registerAndLogin(name, email, password)
+      const { email, password, username } = this.form.getRawValue();
+      this.authService.registerAndLogin(email, password, username)
       .subscribe({
         next: () => {
           this.status = 'success';
