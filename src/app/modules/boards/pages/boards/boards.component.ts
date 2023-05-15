@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { faBox, faWaveSquare, faClock, faAngleUp, faAngleDown, faHeart, faBorderAll, faUsers, faGear } from '@fortawesome/free-solid-svg-icons';
 import { faTrello } from '@fortawesome/free-brands-svg-icons';
 
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-boards',
   templateUrl: './boards.component.html'
@@ -19,6 +21,6 @@ export class BoardsComponent {
   faUsers = faUsers;
   faGear = faGear;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
 }

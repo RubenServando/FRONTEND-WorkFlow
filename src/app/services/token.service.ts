@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { getCookie, setCookie, removeCookie } from 'typescript-cookie';
-//import jwt_decode, { JwtPayload } from "jwt-decode";
 
 @Injectable({
   providedIn: 'root',

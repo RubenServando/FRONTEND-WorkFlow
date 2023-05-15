@@ -9,8 +9,7 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Input() loading = false;
   @Input() typeBtn: 'reset' | 'submit' | 'button' = 'button';
-  @Input() color: 'success' | 'primary' | 'danger' | 'light' | 'sky' =
-    'primary';
+  @Input() color: 'success' | 'primary' | 'danger' | 'light' | 'sky' = 'primary';
   faSpinner = faSpinner;
 
   mapColors = {
