@@ -4,3 +4,15 @@
 @tailwind utilities;
 
 @import '@angular/cdk/overlay-prebuilt.css';
+
+
+:root {
+    --darkRose:#b936ee 50.63%;
+    --purple:#406aff;
+  }
+
+
+.div{
+background-color: (--darkRose);
+
+}
