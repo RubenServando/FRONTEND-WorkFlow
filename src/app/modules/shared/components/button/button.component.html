@@ -1,9 +1,8 @@
 <button
   [type]="typeBtn"
   [disabled]="disabled || loading"
-  [ngClass]="colors"
-  class="w-full font-medium rounded text-sm px-5 py-2"
->
+  class="inline-block w-full rounded bg-purple-900 bg-opacity-30 px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white hover:bg-purple-900 active:bg-purple-900"
+  >
   <fa-icon
     *ngIf="loading"
     class="mr-2"

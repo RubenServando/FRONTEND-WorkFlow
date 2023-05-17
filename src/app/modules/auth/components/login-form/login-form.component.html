@@ -1,9 +1,9 @@
 <div class="container h-full">
   <div class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
     <!-- Left column container with background-->
-    <div class="mb-10 md:mb-0 md:w-8/12 lg:w-6/12">
-      <img src="" class="w-full"
-        alt="Phone image" />
+    <div class="mb-10 md:mb-0 md:w-8/12 lg:w-6/12 ">
+      <img src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="w-full"
+        alt="Imagen de Inicio" />
     </div>
     <form [formGroup]="form" novalidate class="space-y-4 mt-4 mb-5" (ngSubmit)="doLogin()">
       <div>
@@ -19,7 +19,7 @@
         </div>
 
         <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
-          <p *ngIf="form.controls.email.hasError('required')" class="font-medium text--purple-100 text-xs mt-1 ml-1">
+          <p *ngIf="form.controls.email.hasError('required')" class="font-medium text-purple-100 text-xs mt-1 ml-1">
             Este campo es obligatorio
           </p>
           <p *ngIf="form.controls.email.hasError('email')" class="font-medium text--purple-100 text-xs mt-1 ml-1">
@@ -52,15 +52,9 @@
           Credenciales incorrectas
         </p>
       </div>
+     
       <div>
-        <app-btn typeBtn="submit" color="success" [loading]="status === 'loading'">Acceso</app-btn>
+        <app-btn typeBtn="submit">Acceso</app-btn>
       </div>
 
-      <button
-      type="submit"
-      class="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-      data-te-ripple-init
-      data-te-ripple-color="light">
-      Sign in
-    </button>
     </form>
