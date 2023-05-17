@@ -1,74 +1,66 @@
-<h1 class="text-center font-bold py-2 text-gray-700">Acceso a Workflow</h1>
-<form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="doLogin()">
-  <div>
-    <div class="relative">
-      <input
-        #nameInput
-        formControlName="email"
-        placeholder="Enter email"
-        type="email"
-        class="w-full rounded bg-gray-100 border-gray-300 border-2"
-      />
-      <button type="button" class="p-2 absolute right-2" (click)="nameInput.focus()">
-        <fa-icon [icon]="faPen"></fa-icon>
-      </button>
+<div class="container h-full">
+  <div class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+    <!-- Left column container with background-->
+    <div class="mb-10 md:mb-0 md:w-8/12 lg:w-6/12">
+      <img src="" class="w-full"
+        alt="Phone image" />
     </div>
-    <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
-      <p
-        *ngIf="form.controls.email.hasError('required')"
-        class="font-medium text-gray-400 text-xs mt-1 ml-1"
-      >
-          Este campo es obligatorio
-      </p>
-      <p
-        *ngIf="form.controls.email.hasError('email')"
-        class="font-medium text-gray-400 text-xs mt-1 ml-1"
-      >
-          Este debe ser un email
-      </p>
-    </div>
-  </div>
-  <div>
-    <div class="relative">
-      <input
-        formControlName="password"
-        placeholder="Enter password"
-        [type]="showPassword ? 'text' : 'password'"
-        class="w-full rounded bg-gray-100 border-gray-300 border-2"
-      />
-      <button type="button" class="p-2 absolute right-2" (click)="showPassword = !showPassword">
-        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
-      </button>
-    </div>
-    <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
-      <p
-        *ngIf="form.controls.password.hasError('required')"
-        class="font-medium text-gray-400 text-xs mt-1 ml-1"
-      >
-          Este campo es obligatorio
-      </p>
-      <p
-        *ngIf="form.controls.password.hasError('minlength')"
-        class="font-medium text-gray-400 text-xs mt-1 ml-1"
-      >
-          Este campo debe tener más de 8 caracteres
-      </p>
-    </div>
-  </div>
-  <div *ngIf="status === 'failed'">
-    <p
-      class="font-medium text-gray-400 text-xs mt-1 ml-1"
-    >
+    <form [formGroup]="form" novalidate class="space-y-4 mt-4 mb-5" (ngSubmit)="doLogin()">
+      <div>
 
-      Credenciales incorrectas
-    </p>
-  </div>
-  <div>
-    <app-btn
-      typeBtn="submit"
-      color="success"
-      [loading]="status === 'loading'"
-      >Acceso</app-btn
-    >
-  </div>
-</form>
+        <div class="relative 
+    ">
+          <input #nameInput formControlName="email" placeholder="Email" type="email"
+            class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white ">
+          <button type="button" class="p-2 absolute right-2 text-purple-900 text-opacity-70"
+            (click)="nameInput.focus()">
+            <fa-icon [icon]="faPen"></fa-icon>
+          </button>
+        </div>
+
+        <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
+          <p *ngIf="form.controls.email.hasError('required')" class="font-medium text--purple-100 text-xs mt-1 ml-1">
+            Este campo es obligatorio
+          </p>
+          <p *ngIf="form.controls.email.hasError('email')" class="font-medium text--purple-100 text-xs mt-1 ml-1">
+            Este debe ser un email
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <div class="relative">
+          <input formControlName="password" placeholder="Contraseña" [type]="showPassword ? 'text' : 'password'"
+          class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white ">
+          <button type="button" class="p-2 absolute right-2 text-purple-900 text-opacity-70"
+            (click)="showPassword = !showPassword">
+            <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+          </button>
+        </div>
+        <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
+          <p *ngIf="form.controls.password.hasError('required')" class="font-medium text-purple-100 text-xs mt-1 ml-1">
+            Este campo es obligatorio
+          </p>
+          <p *ngIf="form.controls.password.hasError('minlength')" class="font-medium text-purple-100 text-xs mt-1 ml-1">
+            Este campo debe tener más de 8 caracteres
+          </p>
+        </div>
+      </div>
+      <div *ngIf="status === 'failed'">
+        <p class="font-medium text--purple-100 text-xs mt-1 ml-1">
+
+          Credenciales incorrectas
+        </p>
+      </div>
+      <div>
+        <app-btn typeBtn="submit" color="success" [loading]="status === 'loading'">Acceso</app-btn>
+      </div>
+
+      <button
+      type="submit"
+      class="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      Sign in
+    </button>
+    </form>
