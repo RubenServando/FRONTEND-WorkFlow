@@ -1,22 +1,19 @@
 <div class="container h-full">
   <div class="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
     <!-- Left column container with background-->
-    <div class="mb-10 md:mb-0 sm:m-6 sm:w-4/6 md:w-6/12 lg:w-7/12">
+    <div class="mb-10 md:mb-0 sm:w-4/6 md:w-6/12 lg:w-7/12">
       <img src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="w-full"
         alt="Imagen de Inicio" />
-      <p class="font-medium text-purple-900 text-s mt-1 ml-1 mt-4">
-        Eslogan Lorem ipsum dolor sit amet.
-      </p>
-      <p class="font-medium text-purple-100 text-xs mt-1 ml-1">
-        Nuestro objetio /valor Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis enim a quam commodo
-        maximus. Pellentesque
-      </p>
+      <p class="font-medium text-purple-200 text-lg mt-5 ml-1 mt-4 uppercase">
+        Eslogan Lorem ipsum dolor. </p>
+      <p class=" text-purple-100 text-1xl opacity-60 mt-1 ml-1">
+        Nuestro objetio /valor Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam.      </p>
     </div>
     <form [formGroup]="form" novalidate class="space-y-4 mt-4 mb-5" (ngSubmit)="doLogin()">
       <div>
         <div class="relative">
           <input #nameInput formControlName="email" placeholder="Email" type="email"
-            class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white ">
+            class=" min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white ">
           <button type="button" class="p-2 absolute right-2 text-purple-900 text-opacity-70"
             (click)="nameInput.focus()">
             <fa-icon [icon]="faPen"></fa-icon>
@@ -59,7 +56,7 @@
       </div>
 
       <div>
-        <app-btn typeBtn="submit">Acceso</app-btn>
+        <app-btn typeBtn="submit">Inicie Sesión</app-btn>
       </div>
 
     </form>
