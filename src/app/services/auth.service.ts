@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { switchMap, tap } from 'rxjs/operators';
 import { TokenService } from '@services/token.service';
-import { MeService } from '@services/me.service';
+import { UsersService } from '@services/users.service';
 import { ResponseLogin } from '@models/auth.model';
 import { RespLogin } from '@models/auth.model';
 import { User } from '@models/user.model';
@@ -20,7 +20,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
-    private meService: MeService
+    private usersService: UsersService
   ) {}
 
   getDataUser() {
@@ -73,7 +73,7 @@ export class AuthService {
   }
 
   getProfile() {
-    return this.meService.getMeProfile().pipe(
+    return this.usersService.getMeProfile().pipe(
       tap((user) => {
         this.user$.next(user);
       })
