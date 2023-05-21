@@ -10,7 +10,3 @@ export enum BgType {
   Color = 'color',
   Image = 'image',
 }
-
-export interface BoardResponse {
-  board: Board;
-}

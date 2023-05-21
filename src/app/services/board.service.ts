@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { User } from '@models/user.model';
-import { Board, BoardResponse } from '@models/board.model';
+import { Board } from '@models/board.model';
 import { TokenService } from '@services/token.service';
 import { ApiResponse } from '@models/apiResponse.model';
 
@@ -24,7 +24,7 @@ export class BoardService {
 
   getAllBoard() {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    return this.http.get<ApiResponse<[BoardResponse]>>(
+    return this.http.get<ApiResponse<[Board]>>(
       `${this.apiUrl}/board/`,
       {
         headers: headers,
