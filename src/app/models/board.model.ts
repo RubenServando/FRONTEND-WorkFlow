@@ -1,12 +1,16 @@
 export interface Board {
-  bid: string;
-  user_id: string;
-  title: string;
-  bg_type: BgType;
   background: string;
+  bg_type: BgType;
+  bid: string;
+  title: string;
+  user_id: string;
 }
 
 export enum BgType {
   Color = 'color',
   Image = 'image',
+}
+
+export interface BoardResponse {
+  board: Board;
 }

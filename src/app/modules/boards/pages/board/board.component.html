@@ -1,15 +1,28 @@
 <div class="w-full h-full bg-green-700 px-4 pb-4">
   <div class="flex flex-col h-full">
-    <div>
-      <h2 class="text-start font-bold text-white my-4">Tablero > </h2>
+    <div class="container mx-10 flex mt-10">
+      <div class="w-1/1 mr-1">
+        <app-btn color="success" (click)="deleteBoard()">Borrar</app-btn>
+      </div>
     </div>
-    <div class="flex grow items-start w-full h-full overflow-x-scroll" cdkDropListGroup>
-      <div class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0" *ngFor="let column of columns">
+    <div
+      class="flex grow items-start w-full h-full overflow-x-scroll"
+      cdkDropListGroup
+    >
+      <div
+        class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0"
+        *ngFor="let column of columns"
+      >
         <div class="flex justify-between py-1">
           <h3 class="text-sm font-bold ml-2">{{ column.title }}</h3>
         </div>
 
-        <div class="text-sm mt-2 min-h-[2.5rem]" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="column.todos">
+        <div
+          class="text-sm mt-2 min-h-[2.5rem]"
+          cdkDropList
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="column.todos"
+        >
           <div
             (click)="openDialog(todo)"
             *ngFor="let todo of column.todos"
@@ -20,7 +33,9 @@
           </div>
         </div>
       </div>
-      <app-btn color="light" class="shrink-0" (click)="addColumn()">Añade columna</app-btn>
+      <app-btn color="light" class="shrink-0" (click)="addColumn()"
+        >Añade columna</app-btn
+      >
     </div>
   </div>
 </div>

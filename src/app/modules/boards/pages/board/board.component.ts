@@ -6,8 +6,10 @@ import {
 } from '@angular/cdk/drag-drop';
 import { Dialog } from '@angular/cdk/dialog';
 import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.component';
-
 import { ToDo, Column } from '@models/todo.model';
+import { BoardService } from '@services/board.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-board',
@@ -62,7 +64,12 @@ export class BoardComponent {
   doing: ToDo[] = [];
   done: ToDo[] = [];
 
-  constructor(private dialog: Dialog) {}
+  constructor(
+    private dialog: Dialog,
+    private boardService: BoardService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
   drop(event: CdkDragDrop<ToDo[]>) {
     if (event.previousContainer === event.container) {
@@ -98,6 +105,17 @@ export class BoardComponent {
     });
     dialogRef.closed.subscribe((output) => {
       console.log(output);
+    });
+  }
+
+  deleteBoard() {
+    let urlSegments = this.route.snapshot.url;
+    let bid = urlSegments[urlSegments.length - 1].path;
+    this.boardService.deleteBoard(bid).subscribe({
+      next: () => {
+        this.location.back();
+      },
+      error: () => {},
     });
   }
 }

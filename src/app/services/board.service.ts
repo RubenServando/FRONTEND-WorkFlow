@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { User } from '@models/user.model';
-import { Board } from '@models/board.model';
+import { Board, BoardResponse } from '@models/board.model';
 import { TokenService } from '@services/token.service';
+import { ApiResponse } from '@models/apiResponse.model';
 
 @Injectable({ providedIn: 'root' })
 export class BoardService {
@@ -16,15 +17,24 @@ export class BoardService {
       .set('title', title)
       .set('bg_type', bg_type)
       .set('background', background);
-    return this.http.get<Board>(`${this.apiUrl}/board/`, {
+    return this.http.post<ApiResponse<Board>>(`${this.apiUrl}/board/`, params, {
       headers: headers,
-      params: params,
     });
   }
 
-  deleteBoard(uid: string) {
+  getAllBoard() {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    return this.http.get<User>(`${this.apiUrl}/board/${uid}`, {
+    return this.http.get<ApiResponse<[BoardResponse]>>(
+      `${this.apiUrl}/board/`,
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  deleteBoard(bid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/board/${bid}`, {
       headers: headers,
     });
   }
