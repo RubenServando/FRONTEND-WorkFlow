@@ -5,24 +5,19 @@
         <a routerLink="/app">
           <img
             loading="lazy"
-            class="w-20 mr-8"
+            class="w-20 mr-8 cursor-pointer rounded hover:bg-green-800"
             src="/assets/images/logo/logo-solid-white-workflow.png"
             alt="logo"
           />
         </a>
         <div class="flex items-center">
           <ul class="flex items-center space-x-2 text-sm font-medium">
-            <li>
-              
-              <app-btn
-                color="success"
-                (click)="isOpenOverlayBoards = !isOpenOverlayBoards"
-                cdkOverlayOrigin
-                #boardsOverlay="cdkOverlayOrigin"
-              >
-              <li>
-                <app-btn typeBtn="button" color="success">Crear</app-btn>
-              </li>
+            <li>              
+              <app-btn color="success" (click)="isOpenOverlayBoards = !isOpenOverlayBoards" cdkOverlayOrigin #boardsOverlay="cdkOverlayOrigin">
+              <span class="flex space-x-2 text-left">
+                <span> Crear</span>
+                  <fa-icon [icon]="faAngleDown"></fa-icon>
+                </span>
               </app-btn>
             </li>
           </ul>
@@ -47,7 +42,7 @@
           >
             <img
               class="w-8 h-8 rounded-full"
-              [src]="user?.avatar"
+              [src]="user?.photo"
               alt="user photo"
             />
           </button>
@@ -77,11 +72,11 @@
       <div class="py-3 px-4 flex items-center space-x-4">
         <img
           class="w-10 h-10 rounded-full"
-          [src]="user?.avatar"
+          [src]="user?.photo"
           alt=""
         />
         <div class="space-y-1">
-          <div>{{ user?.name }}</div>
+          <div>{{ user?.username }}</div>
           <div class="text-sm text-gray-500">{{ user?.email }}</div>
         </div>
       </div>
@@ -138,7 +133,7 @@
           <fa-icon [icon]="faClose"></fa-icon>
         </button>
       </div>
-      <div class="py-3 px-4 flex justify-between">Nuevo</div>
+      <button class="block py-3 px-4 text-sm text-gray-700" (click)="addBoard()">Nuevo</button>
     </div>
   </ng-template>
 
