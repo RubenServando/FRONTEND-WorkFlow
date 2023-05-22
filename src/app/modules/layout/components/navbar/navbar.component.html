@@ -12,10 +12,15 @@
         </a>
         <div class="flex items-center">
           <ul class="flex items-center space-x-2 text-sm font-medium">
-            <li>              
-              <app-btn color="success" (click)="isOpenOverlayBoards = !isOpenOverlayBoards" cdkOverlayOrigin #boardsOverlay="cdkOverlayOrigin">
-              <span class="flex space-x-2 text-left">
-                <span> Crear</span>
+            <li>
+              <app-btn
+                color="success"
+                (click)="isOpenOverlayBoards = !isOpenOverlayBoards"
+                cdkOverlayOrigin
+                #boardsOverlay="cdkOverlayOrigin"
+              >
+                <span class="flex space-x-2 text-left">
+                  <span> Crear</span>
                   <fa-icon [icon]="faAngleDown"></fa-icon>
                 </span>
               </app-btn>
@@ -70,11 +75,7 @@
         </button>
       </div>
       <div class="py-3 px-4 flex items-center space-x-4">
-        <img
-          class="w-10 h-10 rounded-full"
-          [src]="user?.photo"
-          alt=""
-        />
+        <img class="w-10 h-10 rounded-full" [src]="user?.photo" alt="" />
         <div class="space-y-1">
           <div>{{ user?.username }}</div>
           <div class="text-sm text-gray-500">{{ user?.email }}</div>
@@ -88,6 +89,7 @@
             >Perfil</a
           >
         </li>
+        <!--
         <li>
           <a
             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
@@ -100,16 +102,25 @@
             >Etiquetas</a
           >
         </li>
+        
         <li>
+          
           <a
             class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
             >Preferencias</a
           >
         </li>
+        -->
       </ul>
+
       <ul class="py-1">
         <li>
-          <button class="block py-2 px-4 text-sm text-gray-700" (click)="logout()">Salir</button>
+          <button
+            class="block py-2 px-4 text-sm text-gray-700"
+            (click)="logout()"
+          >
+            Salir
+          </button>
         </li>
       </ul>
     </div>
@@ -133,8 +144,12 @@
           <fa-icon [icon]="faClose"></fa-icon>
         </button>
       </div>
-      <button class="block py-3 px-4 text-sm text-gray-700" (click)="addBoard()">Nuevo</button>
+      <button
+        class="block py-3 px-4 text-sm text-gray-700"
+        (click)="addBoard()"
+      >
+        Nuevo
+      </button>
     </div>
   </ng-template>
-
 </ng-container>
