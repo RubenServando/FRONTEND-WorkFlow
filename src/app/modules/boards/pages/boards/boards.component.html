@@ -10,7 +10,7 @@
         *ngFor="let board of boards"
         [routerLink]="'/app/boards/' + board.bid"
         [style.backgroundColor]="board.background"
-        class="min-w-[100px] max-w-[200px] m-2 items-center bg-green-700 py-3 px-4 rounded text-white font-bold h-36 cursor-pointer hover:bg-green-800"
+        class="min-w-[100px] max-w-[200px] mx-3 items-center bg-green-700 py-3 px-4 rounded text-white h-36 cursor-pointer hover:bg-green-800"
       >
         {{ board.title }}
       </a>
