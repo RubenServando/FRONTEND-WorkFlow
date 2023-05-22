@@ -54,6 +54,7 @@ export class BoardsComponent implements OnInit {
     this.boardService.getAllBoard().subscribe({
       next: (response) => {
         this.boards = response.data.map((item) => item.board);
+        console.log(this.boards);
       },
       error: () => {},
     });
