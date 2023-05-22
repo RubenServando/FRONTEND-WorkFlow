@@ -1,10 +1,14 @@
-<div class="w-full h-full bg-green-700 px-4 pb-4">
+<!--
+  <div class="w-full h-full bg-green-700 px-4 pb-4">
   <div class="flex flex-col h-full">
     <div class="container mx-10 flex mt-10">
       <div class="w-1/1 mr-1">
         <app-btn color="success" (click)="deleteBoard()">Borrar</app-btn>
       </div>
     </div>
+
+----------------------------------------------------------------------------
+
     <div
       class="flex grow items-start w-full h-full overflow-x-scroll"
       cdkDropListGroup
@@ -36,6 +40,35 @@
       <app-btn color="light" class="shrink-0" (click)="addColumn()"
         >Añade columna</app-btn
       >
+    </div>
+  </div>
+</div>
+-->
+<div class="w-full h-full bg-green-700 px-4 pb-4">
+  <div class="flex flex-col h-full">
+    <div class="container mx-10 flex mt-10">
+      <div class="w-1/1 mr-1">
+        <div>
+          <app-btn color="light" class="shrink-0" (click)="addColumn()"
+            >Crear Nueva Tarea</app-btn
+          >
+        </div>
+        <div class="mb-4"></div>
+        <div>
+          <app-btn color="light" class="shrink-0" (click)="deleteBoard()"
+            >Borrar Tablero</app-btn
+          >
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="flex flex-wrap gap-10 items-center">
+          <a
+            class="min-w-[200px] max-w-[200px] mx-3 items-center bg-gray-200 py-3 px-4 rounded text-gray-700 h-60 cursor-pointer hover:bg-gray-500"
+          >
+            <!--{{ card.title }}-->
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
