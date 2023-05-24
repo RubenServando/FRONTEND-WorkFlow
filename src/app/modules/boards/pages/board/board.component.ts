@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -6,8 +6,10 @@ import {
 } from '@angular/cdk/drag-drop';
 import { Dialog } from '@angular/cdk/dialog';
 import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.component';
-import { ToDo, Column } from '@models/todo.model';
+import { ToDo } from '@models/todo.model';
 import { BoardService } from '@services/board.service';
+import { ListService } from '@services/list.service';
+import { List } from '@models/list.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -26,50 +28,23 @@ import { Location } from '@angular/common';
   ],
 })
 export class BoardComponent {
-  columns: Column[] = [
-    {
-      title: 'Por hacer',
-      todos: [
-        {
-          id: '1',
-          title: 'Recetas',
-        },
-        {
-          id: '2',
-          title: 'Compra un unicornio',
-        },
-      ],
-    },
-    {
-      title: 'En proceso',
-      todos: [
-        {
-          id: '3',
-          title: 'Mirate un tutorial',
-        },
-      ],
-    },
-    {
-      title: 'Hecho',
-      todos: [
-        {
-          id: '4',
-          title: 'Pincha un globo',
-        },
-      ],
-    },
-  ];
+  constructor(
+    private dialog: Dialog,
+    private boardService: BoardService,
+    private listService: ListService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
+
+  lists: List[] = [];
 
   todos: ToDo[] = [];
   doing: ToDo[] = [];
   done: ToDo[] = [];
 
-  constructor(
-    private dialog: Dialog,
-    private boardService: BoardService,
-    private route: ActivatedRoute,
-    private location: Location
-  ) {}
+  ngOnInit(): void {
+    this.getAllList();
+  }
 
   drop(event: CdkDragDrop<ToDo[]>) {
     if (event.previousContainer === event.container) {
@@ -88,10 +63,29 @@ export class BoardComponent {
     }
   }
 
-  addColumn() {
-    this.columns.push({
-      title: 'Nueva Columna',
+  /*
+  addList() {
+    this.lists.push({
+      title: 'Nueva Lista',
       todos: [],
+    });
+  }
+  */
+  addList() {
+    this.listService.addList('', 0, '').subscribe({
+      next: (response) => {
+        this.lists.push(response.data);
+      },
+      error: () => {},
+    });
+  }
+
+  getAllList() {
+    this.listService.getAllList().subscribe({
+      next: (response) => {
+        this.lists = response.data;
+      },
+      error: () => {},
     });
   }
 
@@ -119,3 +113,38 @@ export class BoardComponent {
     });
   }
 }
+
+/*
+lists: List[] = [
+{
+  title: 'Por hacer',
+  todos: [
+    {
+      id: '1',
+      title: 'Recetas',
+    },
+    {
+      id: '2',
+      title: 'Compra un unicornio',
+    },
+  ],
+},
+{
+  title: 'En proceso',
+  todos: [
+    {
+      id: '3',
+      title: 'Mirate un tutorial',
+    },
+  ],
+},
+{
+  title: 'Hecho',
+  todos: [
+    {
+      id: '4',
+      title: 'Pincha un globo',
+    },
+  ],
+},
+];*/

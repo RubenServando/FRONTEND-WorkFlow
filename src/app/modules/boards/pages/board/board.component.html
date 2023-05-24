@@ -3,7 +3,7 @@
     <div class="container mx-10 flex mt-10">
       <div class="w-1/1 mr-1">
         <div>
-          <app-btn color="light" class="shrink-0" (click)="addColumn()"
+          <app-btn color="light" class="shrink-0" (click)="addList()"
             >Crear Nueva Tarea</app-btn
           >
         </div>
@@ -17,10 +17,11 @@
       <div class="w-full">
         <div class="flex flex-wrap gap-10 items-center">
           <a
-            *ngFor="let column of columns"
+            *ngFor="let list of lists"
+            [routerLink]="'/app/boards/' + list.lid"
             class="min-w-[200px] max-w-[200px] mx-3 items-center bg-gray-200 py-3 px-4 rounded text-gray-700 h-60 cursor-pointer hover:bg-gray-500"
           >
-            {{ column.title }}
+            {{ list.title }}
           </a>
         </div>
       </div>
@@ -64,7 +65,7 @@
     >
       <div
         class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0"
-        *ngFor="let column of columns"
+        *ngFor="let column of lists"
       >
         <div class="flex justify-between py-1">
           <h3 class="text-sm font-bold ml-2">{{ column.title }}</h3>
@@ -86,7 +87,7 @@
           </div>
         </div>
       </div>
-      <app-btn color="light" class="shrink-0" (click)="addColumn()"
+      <app-btn color="light" class="shrink-0" (click)="addList()"
         >Añade columna</app-btn
       >
     </div>
