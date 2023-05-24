@@ -72,7 +72,9 @@ export class BoardComponent {
   }
   */
   addList() {
-    this.listService.addList('', 0, '').subscribe({
+    let urlSegments = this.route.snapshot.url;
+    let bid = urlSegments[urlSegments.length - 1].path;
+    this.listService.addList('lista', 0, bid).subscribe({
       next: (response) => {
         this.lists.push(response.data);
       },
