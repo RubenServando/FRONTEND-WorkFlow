@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
-import { BackgroundComponent } from './components/background/background.component';
+import { ProfileRoutingModule } from './profile-routing.module';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { BackgroundComponent } from './components/background/background/background.component';
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [ProfileComponent,
     BackgroundComponent],
   imports: [
-    CommonModule  ]
+    CommonModule,
+    ProfileRoutingModule
+  ]
 })
 export class ProfileModule { }
