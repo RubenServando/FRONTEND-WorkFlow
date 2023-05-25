@@ -4,7 +4,7 @@
       <div class="w-1/1 mr-1">
         <div>
           <app-btn color="light" class="shrink-0" (click)="addList()"
-            >Crear Nueva Tarea</app-btn
+            >Crear Nueva Columna</app-btn
           >
         </div>
         <div class="mb-4"></div>
@@ -14,7 +14,29 @@
           >
         </div>
       </div>
-
+      <div class="flex flex-wrap gap-10 items-center">
+        <div
+          *ngFor="let list of lists"
+          class="min-w-[200px] max-w-[200px] mx-3 items-center bg-gray-300 py-3 px-4 rounded text-gray-700 h-60 min-h-[2.5rem] cursor-pointer"
+        >
+          {{ list.list.title }}
+          <div cdkDrag class="flex flex-wrap gap-10 items-center">
+            <app-btn color="light" class="shrink-0" (click)="addCard(list.list)"
+              >Crear Nueva Tarea</app-btn
+            >
+            <div
+              *ngFor="let card of list.cards"
+              cdkDrag
+              class="bg-white shadow p-2 rounded mt-2 border-x-gray-300 cursor-pointer hover:bg-gray-500"
+            >
+              {{ card.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
       <div class="flex items-start w-full" cdkDropListGroup>
         <div class="rounded mx-6 bg-gray-200 w-72 p-2 mr-3">
           <div class="flex justify-center py-1">
@@ -77,18 +99,9 @@
             </div>
           </div>
         </div>
+-->
 
-        <div class="flex flex-wrap gap-10 items-center">
-          <a
-            *ngFor="let list of lists"
-            class="min-w-[200px] max-w-[200px] mx-3 items-center bg-gray-300 py-3 px-4 rounded text-gray-700 h-60 cursor-pointer hover:bg-gray-500"
-            >{{ list.title }}</a
-          >
-        </div>
-      </div>
-    </div>
-
-    <!--
+  <!--
 
   CODIGO EJEMPLO TRELLO
 ----------------------------------------------------------------------------
@@ -137,6 +150,4 @@
     </div>
   </div>
 </div>
--->
-  </div>
-</div>
+--></div>

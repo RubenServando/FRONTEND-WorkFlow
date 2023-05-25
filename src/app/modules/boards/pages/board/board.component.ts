@@ -9,9 +9,12 @@ import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.
 import { ToDo } from '@models/todo.model';
 import { BoardService } from '@services/board.service';
 import { ListService } from '@services/list.service';
+import { CardService } from '@services/card.service';
 import { List } from '@models/list.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { ListUI } from '@models/listUI.model';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -32,11 +35,12 @@ export class BoardComponent {
     private dialog: Dialog,
     private boardService: BoardService,
     private listService: ListService,
+    private cardService: CardService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
 
-  lists: List[] = [];
+  lists: ListUI[] = [];
 
   todos: ToDo[] = [
     {
@@ -95,16 +99,47 @@ export class BoardComponent {
     let bid = urlSegments[urlSegments.length - 1].path;
     this.listService.addList('lista', 0, bid).subscribe({
       next: (response) => {
-        this.lists.push(response.data);
+        this.lists.push({ list: response.data, cards: [] });
       },
       error: () => {},
     });
   }
 
   getAllList() {
-    this.listService.getAllList().subscribe({
+    let urlSegments = this.route.snapshot.url;
+    let bid = urlSegments[urlSegments.length - 1].path;
+    this.listService.getAllList(bid).subscribe({
       next: (response) => {
-        this.lists = response.data;
+        const listData = response.data;
+        console.log(listData);
+
+        const cardRequests = listData.map((item) =>
+          this.cardService.getCardsFromList(item.lid)
+        );
+
+        forkJoin(cardRequests).subscribe({
+          next: (cardResponses) => {
+            this.lists = listData.map((item, index) => ({
+              list: item,
+              cards: cardResponses[index].data,
+            }));
+          },
+          error: () => {},
+        });
+      },
+      error: () => {},
+    });
+  }
+
+  getCardsFromList(lid: string) {
+    console.log(lid);
+    return this.cardService.getCardsFromList(lid);
+  }
+
+  addCard(list: List) {
+    this.cardService.addCard('Card', list.lid, 0, 'Description').subscribe({
+      next: (response) => {
+        console.log(response);
       },
       error: () => {},
     });
@@ -122,7 +157,6 @@ export class BoardComponent {
       console.log(output);
     });
   }
-
   deleteBoard() {
     let urlSegments = this.route.snapshot.url;
     let bid = urlSegments[urlSegments.length - 1].path;

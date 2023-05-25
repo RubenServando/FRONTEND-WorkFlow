@@ -22,9 +22,9 @@ export class ListService {
     });
   }
 
-  getAllList() {
+  getAllList(bid: string) {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    return this.http.get<ApiResponse<[List]>>(`${this.apiUrl}/list/`, {
+    return this.http.get<ApiResponse<[List]>>(`${this.apiUrl}/board/${bid}`, {
       headers: headers,
     });
   }
