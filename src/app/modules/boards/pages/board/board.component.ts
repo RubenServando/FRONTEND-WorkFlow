@@ -38,9 +38,36 @@ export class BoardComponent {
 
   lists: List[] = [];
 
-  todos: ToDo[] = [];
-  doing: ToDo[] = [];
-  done: ToDo[] = [];
+  todos: ToDo[] = [
+    {
+      id: '1',
+      title: 'Tarea 1',
+    },
+    {
+      id: '2',
+      title: 'Tarea 2',
+    },
+    {
+      id: '3',
+      title: 'Tarea 3',
+    },
+  ];
+  doing: ToDo[] = [
+    {
+      id: '1',
+      title: 'Tarea 1',
+    },
+  ];
+  done: ToDo[] = [
+    {
+      id: '1',
+      title: 'Tarea 1',
+    },
+    {
+      id: '2',
+      title: 'Tarea 2',
+    },
+  ];
 
   ngOnInit(): void {
     this.getAllList();
@@ -63,14 +90,6 @@ export class BoardComponent {
     }
   }
 
-  /*
-  addList() {
-    this.lists.push({
-      title: 'Nueva Lista',
-      todos: [],
-    });
-  }
-  */
   addList() {
     let urlSegments = this.route.snapshot.url;
     let bid = urlSegments[urlSegments.length - 1].path;
@@ -115,38 +134,3 @@ export class BoardComponent {
     });
   }
 }
-
-/*
-lists: List[] = [
-{
-  title: 'Por hacer',
-  todos: [
-    {
-      id: '1',
-      title: 'Recetas',
-    },
-    {
-      id: '2',
-      title: 'Compra un unicornio',
-    },
-  ],
-},
-{
-  title: 'En proceso',
-  todos: [
-    {
-      id: '3',
-      title: 'Mirate un tutorial',
-    },
-  ],
-},
-{
-  title: 'Hecho',
-  todos: [
-    {
-      id: '4',
-      title: 'Pincha un globo',
-    },
-  ],
-},
-];*/
