@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ListUI } from '@models/listUI.model';
 import { forkJoin } from 'rxjs';
+import { Card } from '@models/card.model';
 
 @Component({
   selector: 'app-board',
@@ -145,12 +146,12 @@ export class BoardComponent {
     });
   }
 
-  openDialog(todo: ToDo) {
+  openDialog(card: Card) {
     const dialogRef = this.dialog.open(TodoDialogComponent, {
       minWidth: '300px',
       maxWidth: '50%',
       data: {
-        todo: todo,
+        card: card,
       },
     });
     dialogRef.closed.subscribe((output) => {
