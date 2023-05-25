@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './pages/profile.component.html',
+  templateUrl: './profile-form.component.html',
 })
-export class ProfileComponent {
-  constructor() {}
+export class ProfileFormComponent {
+  constructor() { }
 }

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { BackgroundComponent } from './components/background/background/background.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 
 
