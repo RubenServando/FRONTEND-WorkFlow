@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ProfileFormComponent } from './Pelota/profile-form.component';
-import { BackgroundComponent } from './Pelota/background/background.component';
+import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { BackgroundComponent } from './components/background/background.component';
 
 
 
