@@ -1,22 +1,22 @@
-<div class="w-screen h-screen bg-white sm:bg-gray-50 relative">
+<div class="w-screen h-screen overflow-hidden relative">
   <app-background></app-background>
-  <div class="relative w-full sm:w-7/12 md:w-6/12 lg:w-4/12 m-auto">
-    <app-header></app-header>
-    <div class="bg-white rounded shadow-none sm:shadow-lg py-4 px-4 md:px-9">
-      <div class="mb-4">
+  <app-header></app-header>
+  <div class="relative w-9/12 sm:w-8/12 md:w-9/12 lg:w-6/12 m-auto">
+    <div class="rounded shadow-none sm:shadow-lg py-4 px-4 md:px-9 w-full  ">
+      <div class="mb-4 mr-24 sm:-mr-2 md:mr-4 lg:mr-0 ">
         <app-login-form></app-login-form>
       </div>
-      <hr class="my-4 border-b-1 border-r-gray-300" />
-      <div
-        class="flex justify-center items-center space-x-0 space-y-2 md:space-x-2 md:space-y-0 flex-col md:flex-row"
-      >
-        <a routerLink="/forgot-password" class="text-green-700"
-          >¿No puedes acceder?</a
-        >
-        <span class="text-gray-500 hidden md:block">•</span>
-        <a routerLink="/register" class="text-green-700">Crea una cuenta</a>
+
+      <hr class="my-4 border-b-1 border-purple-400" />
+      <div class="flex justify-center items-center space-x-0 space-y-2 md:space-x-2 md:space-y-0 flex-col md:flex-row">
+        <a routerLink="/forgot-password" class="text-pink-900 opacity-70 hover:underline hover:opacity-100 ">¿HA
+          OLVIDADO LA CONTRASEÑA?</a>
+        <span class="text-pink-900 opacity-90 hidden md:block ">•</span>
+        <a routerLink="/register" class="text-pink-900 opacity-70 hover:underline hover:opacity-100 ">REGÍSTRESE</a>
+
       </div>
     </div>
+
     <app-footer></app-footer>
   </div>
 </div>
