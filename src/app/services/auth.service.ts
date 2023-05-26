@@ -74,8 +74,8 @@ export class AuthService {
 
   getProfile() {
     return this.usersService.getMeProfile().pipe(
-      tap((user) => {
-        this.user$.next(user);
+      tap((userResponse) => {
+        this.user$.next(userResponse.user);
       })
     );
   }

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User } from '@models/user.model';
+import { User, UserResponse } from '@models/user.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
 import { TokenService } from '@services/token.service';
-
-
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +16,7 @@ export class UsersService {
   getMeProfile() {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
     let params = new HttpParams().set('email', this.getEmail());
-    return this.http.get<User>(`${this.apiUrl}/user/info`, {
+    return this.http.get<UserResponse<User>>(`${this.apiUrl}/user/info`, {
       headers: headers,
       params: params,
     });
