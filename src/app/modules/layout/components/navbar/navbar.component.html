@@ -10,11 +10,10 @@
             alt="logo"
           />
         </a>
-        <app-btn (click)="isOpenOverlayBoards = !isOpenOverlayBoards" cdkOverlayOrigin #boardsOverlay="cdkOverlayOrigin">              
-              </app-btn>
-      </div> 
 
-      <div class="flex items-center mt-5">
+      </div>
+      <div class="flex items-center">
+
         <div class="flex space-x-2">
           <button class="text-fuchsia-900 opacity-60 " type="button">
             <fa-icon [icon]="faBell"></fa-icon>
@@ -56,7 +55,9 @@
         </button>
       </div>
       <div class="py-3 px-4 flex items-center space-x-4">
-    NO FUNCIONA
+
+        <img class="w-10 h-10 rounded-full" [src]="user?.photo" alt="" />
+        <div class="space-y-1">
           <div>{{ user?.username }}</div>
           <div class="text-sm text-gray-500">{{ user?.email }}</div>
       </div>
@@ -80,31 +81,9 @@
       <ul class="py-1">
         <li>
           <button class="block py-2 px-4 text-sm text-center text-fuchsia-900 hover:bg-transparent" (click)="logout()">Salir</button>
+
         </li>
       </ul>
     </div>
   </ng-template>
-
-  <ng-template
-    cdkConnectedOverlay
-    [cdkConnectedOverlayOrigin]="boardsOverlay"
-    [cdkConnectedOverlayOpen]="isOpenOverlayBoards"
-    (overlayOutsideClick)="isOpenOverlayBoards = !isOpenOverlayBoards"
-  >
-    <div
-      class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
-    >
-      <div class="py-2 px-4 text-center relative">
-        <span class="block text-normal text-gray-900">Tablero</span>
-        <button
-          (click)="isOpenOverlayBoards = !isOpenOverlayBoards"
-          class="block text-sm text-gray-900 absolute right-3 top-3"
-        >
-          <fa-icon [icon]="faClose"></fa-icon>
-        </button>
-      </div>
-      <button class="block py-3 px-4 text-sm text-gray-700" (click)="addBoard()">Nuevo</button>
-    </div>
-  </ng-template>
-
 </ng-container>

@@ -2,34 +2,40 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { User } from '@models/user.model';
+import { Board } from '@models/board.model';
 import { TokenService } from '@services/token.service';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
+import { ApiResponse } from '@models/apiResponse.model';
 
 @Injectable({ providedIn: 'root' })
-export class MeService {
+export class BoardService {
   apiUrl = environment.API_URL;
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-  getMeProfile() {
+  addBoard(title: string, bg_type: string, background: string) {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    let params = new HttpParams().set('email', this.getEmail());
-    return this.http.get<User>(`${this.apiUrl}/user/info`, {
-      headers: headers,
-      params: params,
-    });
-  }
-
-  getMeBoards() {
-    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    return this.http.get<User>(`${this.apiUrl}/api/v1/me/boards`, {
+    let params = new HttpParams()
+      .set('title', title)
+      .set('bg_type', bg_type)
+      .set('background', background);
+    return this.http.post<ApiResponse<Board>>(`${this.apiUrl}/board/`, params, {
       headers: headers,
     });
   }
 
-  getEmail() {
-    const token = this.tokenService.getToken();
-    const decodeToken: any = jwt_decode(token);
+  getAllBoard() {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    return this.http.get<ApiResponse<[Board]>>(
+      `${this.apiUrl}/board/`,
+      {
+        headers: headers,
+      }
+    );
+  }
 
-    return decodeToken.email ? decodeToken.email : '';
+  deleteBoard(bid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/board/${bid}`, {
+      headers: headers,
+    });
   }
 }
