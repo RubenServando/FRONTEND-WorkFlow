@@ -1,7 +1,7 @@
-<ng-container *ngIf="user$ | async as user">
-  <nav class="bg-indigo-400 bordertransparent px-6 shadow-md">
+<ng-container *ngIf="user$ | async as user" class=" ">
+  <nav class="bg-indigo-400 opacity-60 h-20 px-6 shadow-md">
     <div class="flex flex-wrap justify-between items-center">
-      <div class="flex items-center">
+      <div class="flex items-center mt-5">
         <a routerLink="/app">
           <img
             loading="lazy"
@@ -24,7 +24,7 @@
           </ul>
         </div>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center mt-5">
         <div class="flex space-x-2">
           <button class="text-white" type="button">
             <fa-icon [icon]="faBell"></fa-icon>
