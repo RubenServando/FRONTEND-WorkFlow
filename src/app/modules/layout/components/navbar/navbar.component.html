@@ -1,5 +1,5 @@
 <ng-container *ngIf="user$ | async as user" class=" ">
-  <nav class="bg-indigo-400 opacity-60 h-20 px-6 shadow-md">
+  <nav class="bg-transparent h-20 px-6 shadow-md">
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex items-center mt-5">
         <a routerLink="/app">
@@ -10,6 +10,7 @@
             alt="logo"
           />
         </a>
+       
         <div class="flex items-center">
           <ul class="flex items-center space-x-2 text-sm font-medium">
             <li>
@@ -23,29 +24,26 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> 
+
       <div class="flex items-center mt-5">
         <div class="flex space-x-2">
-          <button class="text-white" type="button">
+          <button class="text-fuchsia-900" type="button">
             <fa-icon [icon]="faBell"></fa-icon>
           </button>
-          <button class="text-white" type="button">
+          <button class="text-fuchsia-900" type="button">
             <fa-icon [icon]="faInfoCircle"></fa-icon>
           </button>
           <button
             type="button"
-            class="flex rounded-full"
+            class="flex rounded-md bg-fuchsia-900 w-20 justify-center  text-white"
             aria-expanded="false"
             type="button"
             (click)="isOpenOverlayAvatar = !isOpenOverlayAvatar"
             cdkOverlayOrigin
             #menuOverlay="cdkOverlayOrigin"
-          >
-            <img
-              class="w-8 h-8 rounded-full"
-              [src]="user?.photo"
-              alt="user photo"
-            />
+            
+          >  Mi Perfil
           </button>
         </div>
       </div>
