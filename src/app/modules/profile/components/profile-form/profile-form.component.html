@@ -1,14 +1,25 @@
   
 
-  <h1 class="text-center font-medium text-pink-900 opacity-70 text-lg mt-5 ml-1 uppercase cursor-default py-2 ">Introduce tus datos</h1>
   
   
   <div *ngIf="!showProfile">
+  <h1 class="text-center font-medium text-pink-900 opacity-70 text-lg mt-5 ml-1 uppercase cursor-default py-2 ">Introduce tus datos</h1>
 
    
     <form  novalidate class="space-y-4 mt-4 mb-5" (ngSubmit)="getProfile()">
-
     <div class="relative">
+      <label for="" class = "text-purple-900 underline p" >Nombre de Usuario</label>
+      <input
+        #nameInput
+        formControlName="username"
+        value="aisjhd"
+        type="text"
+        name="email"
+        autocomplete="username"
+        class="min-h-[auto] w-full mt-3 border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-purple-900 hover:outline-none hover:border-white focus:border-white "
+      />
+    </div>
+ <div class="relative">
       <label for="" class = "text-purple-900 underline p" >Email</label>
       <input
         #nameInput
@@ -20,7 +31,6 @@
         class="min-h-[auto] w-full mt-3 border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-purple-900 hover:outline-none hover:border-white focus:border-white "
       />
     </div>
-
 
 
 
