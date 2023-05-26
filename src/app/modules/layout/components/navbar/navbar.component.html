@@ -24,7 +24,7 @@
           </button>
           <button
             type="button"
-            class="flex rounded-md bg-fuchsia-900 opacity-60 w-20 justify-center  text-white"
+            class="flex rounded-md bg-fuchsia-900 opacity-60 w-20 justify-center  hover:bg-transparent hover:text-fuchsia-900  text-white"
             aria-expanded="false"
             type="button"
             (click)="isOpenOverlayAvatar = !isOpenOverlayAvatar"
@@ -47,16 +47,16 @@
       class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow"
     >
       <div class="py-2 px-4 text-center relative">
-        <span class="block text-normal text-gray-900">Tu Cuenta</span>
+        <span class="block text-normal text-fuchsia-900">Tu Cuenta</span>
         <button
           (click)="isOpenOverlayAvatar = !isOpenOverlayAvatar"
           class="block text-sm text-gray-900 absolute right-3 top-3"
         >
-          <fa-icon [icon]="faClose"></fa-icon>
+          <fa-icon class="text-fuchsia-900" [icon]="faClose"></fa-icon>
         </button>
       </div>
       <div class="py-3 px-4 flex items-center space-x-4">
-    
+    NO FUNCIONA
           <div>{{ user?.username }}</div>
           <div class="text-sm text-gray-500">{{ user?.email }}</div>
       </div>
@@ -64,13 +64,13 @@
         <li>
           <a
             routerLink="/app/profile"
-            class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+            class="block py-2 px-4 text-sm text-center text-fuchsia-900 hover:bg-gray-100 dark:hover:bg-gray-600"
             >Perfil</a
           >
         </li>
         <li>
           <a
-            class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+            class="block py-2 px-4 text-sm  text-center hover:bg-gray-100 text-fuchsia-900 dark:hover:bg-gray-600"
             >Actividad</a
           >
         </li>
@@ -79,7 +79,7 @@
       </ul>
       <ul class="py-1">
         <li>
-          <button class="block py-2 px-4 text-sm text-gray-700" (click)="logout()">Salir</button>
+          <button class="block py-2 px-4 text-sm text-center text-fuchsia-900 hover:bg-transparent" (click)="logout()">Salir</button>
         </li>
       </ul>
     </div>
