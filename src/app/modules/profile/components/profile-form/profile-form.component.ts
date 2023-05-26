@@ -19,10 +19,11 @@ export class ProfileFormComponent {
     });
   }
 
-  register() {
+  getProfile() {
     // Add your registration logic here
     // Once registration is successful, toggle to view profile section
     this.showProfile = true;
+    
   }
 
   editProfile() {
