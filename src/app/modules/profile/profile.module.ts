@@ -8,8 +8,6 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
 import { BackgroundComponent } from './components/background/background.component';
 
 
-
-
 @NgModule({
   declarations: [ProfileComponent,
     ProfileFormComponent,
