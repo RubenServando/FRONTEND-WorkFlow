@@ -98,7 +98,7 @@ export class BoardComponent implements OnInit {
   addList() {
     let urlSegments = this.route.snapshot.url;
     let bid = urlSegments[urlSegments.length - 1].path;
-    this.listService.addList('lista', 0, bid).subscribe({
+    this.listService.addList('Columna', 0, bid).subscribe({
       next: (response) => {
         this.lists.push({ list: response.data, cards: [] });
       },
@@ -111,22 +111,27 @@ export class BoardComponent implements OnInit {
     let bid = urlSegments[urlSegments.length - 1].path;
     this.listService.getAllList(bid).subscribe({
       next: (response) => {
-        const listData = response.data;
-        console.log(listData);
+        this.lists = [];
+        try {
+          const listData = response.data;
+          console.log(listData);
 
-        const cardRequests = listData.map((item) =>
-          this.cardService.getCardsFromList(item.lid)
-        );
+          const cardRequests = listData.map((item) =>
+            this.cardService.getCardsFromList(item.lid)
+          );
 
-        forkJoin(cardRequests).subscribe({
-          next: (cardResponses) => {
-            this.lists = listData.map((item, index) => ({
-              list: item,
-              cards: cardResponses[index].data,
-            }));
-          },
-          error: () => {},
-        });
+          forkJoin(cardRequests).subscribe({
+            next: (cardResponses) => {
+              this.lists = listData.map((item, index) => ({
+                list: item,
+                cards: cardResponses[index].data,
+              }));
+            },
+            error: () => {},
+          });
+        } catch (error) {
+          this.lists = [];
+        }
       },
       error: () => {},
     });
@@ -138,9 +143,9 @@ export class BoardComponent implements OnInit {
   }
 
   addCard(list: List) {
-    this.cardService.addCard('Card', list.lid, 0, 'Description').subscribe({
+    this.cardService.addCard('Tarea', list.lid, 0, 'Description').subscribe({
       next: (response) => {
-        this.getAllList()
+        this.getAllList();
       },
       error: () => {},
     });
@@ -156,6 +161,7 @@ export class BoardComponent implements OnInit {
     });
     dialogRef.closed.subscribe((output) => {
       console.log(output);
+        this.getAllList();      
     });
   }
   deleteBoard() {
@@ -164,6 +170,15 @@ export class BoardComponent implements OnInit {
     this.boardService.deleteBoard(bid).subscribe({
       next: () => {
         this.location.back();
+      },
+      error: () => {},
+    });
+  }
+
+  deleteList(list: List) {
+    this.listService.deleteList(list.lid).subscribe({
+      next: () => {
+        this.getAllList();
       },
       error: () => {},
     });

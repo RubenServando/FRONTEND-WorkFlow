@@ -37,7 +37,7 @@ export class CardService {
     });
   }
 
-  getDeail(cid: string) {
+  getDetail(cid: string) {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
     return this.http.get<ApiResponse<Card>>(`${this.apiUrl}/card/${cid}`, {
       headers: headers,

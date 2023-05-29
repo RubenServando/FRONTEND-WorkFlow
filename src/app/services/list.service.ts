@@ -28,4 +28,11 @@ export class ListService {
       headers: headers,
     });
   }
+
+  deleteList(lid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/list/${lid}`, {
+      headers: headers,
+    });
+  }
 }

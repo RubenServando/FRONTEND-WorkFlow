@@ -10,7 +10,7 @@
     <fa-icon class="text-gray-800" [icon]="faCheckToSlot"></fa-icon>
     <div class="flex flex-col">
       <h3 class="text-lg font-semibold text-gray-800">{{ card.title }}</h3>
-      <p class="text-sm text-gray-500">en lista ToDo</p>
+      <!--<p class="text-sm text-gray-500">en lista ToDo</p>-->
     </div>
   </div>
   <div class="flex w-full gap-4">
@@ -24,13 +24,16 @@
           similique rerum minus excepturi sed vel, id voluptatibus repellendus
           numquam quod.
         </p>
+        <!--
         <div class="flex space-x-2">
           <button type="button" (click)="closeWithRta(true)">Si</button>
           <button type="button" (click)="closeWithRta(false)">No</button>
         </div>
+        -->
       </div>
     </div>
     <div class="flex flex-auto space-y-2 flex-col">
+      <!--
       <app-btn typeBtn="button" color="light">
         <span class="flex space-x-2 text-left">
           <fa-icon class="text-gray-800" [icon]="faUser"></fa-icon>
@@ -53,6 +56,25 @@
         <span class="flex space-x-2 text-left">
           <fa-icon class="text-gray-800" [icon]="faClock"></fa-icon>
           <span>Fechas</span>
+        </span>
+      </app-btn>
+      -->
+      <app-btn typeBtn="button" color="light">
+        <span class="flex space-x-2 text-left">
+          <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
+          <span>Editar nombre</span>
+        </span>
+      </app-btn>
+      <app-btn typeBtn="button" color="light">
+        <span class="flex space-x-2 text-left">
+          <fa-icon class="text-gray-800" [icon]="faEdit"></fa-icon>
+          <span>Editar descripción</span>
+        </span>
+      </app-btn>
+      <app-btn typeBtn="button" color="light" (click)="deleteCard()">
+        <span class="flex space-x-2 text-left">
+          <fa-icon class="text-gray-800" [icon]="faTrashCan"></fa-icon>
+          <span>Borrar</span>
         </span>
       </app-btn>
     </div>

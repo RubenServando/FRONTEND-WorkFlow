@@ -4,7 +4,7 @@
       <div class="w-1/1 mr-1">
         <div>
           <app-btn color="light" class="shrink-0" (click)="addList()"
-            >Crear Nueva Columna</app-btn
+            >Crear Columna</app-btn
           >
         </div>
         <div class="mb-4"></div>
@@ -20,10 +20,15 @@
           class="min-w-[200px] max-w-[200px] mx-3 items-center bg-gray-300 py-3 px-4 rounded text-gray-700 h-60 min-h-[2.5rem] cursor-pointer"
         >
           {{ list.list.title }}
-          <div cdkDrag class="flex flex-wrap gap-10 items-center">
+          <div class="flex flex-wrap gap-2 items-center">
             <app-btn color="light" class="shrink-0" (click)="addCard(list.list)"
-              >Crear Nueva Tarea</app-btn
+              >Añadir tarea</app-btn
             >
+            <div class="flex flex-wrap gap-2 items-center">
+              <app-btn color="light" class="shrink-0" (click)="deleteList(list.list)"
+                >Borrar columna</app-btn
+              >
+
             <div
               *ngFor="let card of list.cards"
               (click)="openDialog(card)"

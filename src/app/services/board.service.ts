@@ -24,12 +24,9 @@ export class BoardService {
 
   getAllBoard() {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    return this.http.get<ApiResponse<[Board]>>(
-      `${this.apiUrl}/board/`,
-      {
-        headers: headers,
-      }
-    );
+    return this.http.get<ApiResponse<[Board]>>(`${this.apiUrl}/board/`, {
+      headers: headers,
+    });
   }
 
   deleteBoard(bid: string) {
