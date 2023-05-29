@@ -16,6 +16,8 @@ import { Location } from '@angular/common';
 import { ListUI } from '@models/listUI.model';
 import { forkJoin } from 'rxjs';
 import { Card } from '@models/card.model';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -117,14 +119,16 @@ export class BoardComponent implements OnInit {
           console.log(listData);
 
           const cardRequests = listData.map((item) =>
-            this.cardService.getCardsFromList(item.lid)
+            this.cardService
+              .getCardsFromList(item.lid)
+              .pipe(catchError(() => of({ data: [] })))
           );
 
           forkJoin(cardRequests).subscribe({
             next: (cardResponses) => {
               this.lists = listData.map((item, index) => ({
                 list: item,
-                cards: cardResponses[index].data,
+                cards: cardResponses[index].data || [],
               }));
             },
             error: () => {},
@@ -160,8 +164,7 @@ export class BoardComponent implements OnInit {
       },
     });
     dialogRef.closed.subscribe((output) => {
-      console.log(output);
-        this.getAllList();      
+      this.getAllList();
     });
   }
   deleteBoard() {
