@@ -1,0 +1,38 @@
+<div *ngIf="!showProfile">
+  <h1
+    class="text-center font-medium text-pink-900 opacity-70 text-lg mt-5 ml-1 uppercase cursor-default py-2"
+  >
+    Mi Perfil
+  </h1>
+
+  <form novalidate class="space-y-4 mt-4 mb-5" (ngSubmit)="getProfile()">
+    <div class="relative">
+      <label for="" class="text-pink-900 opacity-70 p">Nombre de Usuario</label>
+      <input
+        #nameInput
+        formControlName="username"
+        value={{user.username}}
+        type="text"
+        name="username"
+        autocomplete="username"
+        readonly="true"
+        class="min-h-[auto] w-full mt-3 border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-purple-900 hover:outline-none hover:border-white focus:border-white"
+      />
+    </div>
+    <div class="relative">
+      <label for="" class="cursor-default text-pink-900 opacity-70 p"
+        >Email</label
+      >
+      <input
+        #nameInput
+        formControlName="email"
+        value={{user.email}}
+        type="email"
+        name="email"
+        autocomplete="off"
+        readonly="true"
+        class="cursor-default min-h-[auto] w-full mt-3 border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-purple-900 hover:outline-none hover:border-white focus:border-white"
+      />
+    </div>
+  </form>
+</div>

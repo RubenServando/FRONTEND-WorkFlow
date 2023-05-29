@@ -40,22 +40,22 @@
 -->
 
 <div *ngIf="!showRegister">
-  <h1 class="text-center font-bold py-2 text-gray-700">Introduce tus datos</h1>
-  <form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="register()">
+  <h1 class="text-center font-medium text-pink-900 opacity-70 text-lg mt-5 ml-1 uppercase cursor-default py-2 ">Introduce tus datos</h1>
+  <form [formGroup]="form" novalidate class="space-y-4 mt-4 mb-5" (ngSubmit)="register()">
     <div>
       <div class="relative">
         <input
           formControlName="username"
-          placeholder="Enter your user name"
+          placeholder="Nombre de Usuario"
           type="text"
           username="username"
-          class="w-full rounded bg-gray-100 border-gray-300 border-2"
+          class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white "
         />
       </div>
       <div *ngIf="form.controls.username.touched && form.controls.username.invalid">
         <p
           *ngIf="form.controls.username.hasError('required')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo es obligatorio
         </p>
@@ -66,23 +66,23 @@
         <input
           #nameInput
           formControlName="email"
-          placeholder="Enter email"
+          placeholder="Email"
           type="email"
           name="email"
           autocomplete="off"
-          class="w-full rounded bg-gray-100 border-gray-300 border-2"
+          class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white "
         />
       </div>
       <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
         <p
           *ngIf="form.controls.email.hasError('required')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo es obligatorio
         </p>
         <p
           *ngIf="form.controls.email.hasError('email')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo debe ser un email
         </p>
@@ -92,13 +92,13 @@
       <div class="relative">
         <input
           formControlName="password"
-          placeholder="Enter password"
+          placeholder="Contraseña"
           [type]="showPassword ? 'text' : 'password'"
-          class="w-full rounded bg-gray-100 border-gray-300 border-2"
+          class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white "
         />
         <button
           type="button"
-          class="p-2 absolute right-2"
+          class="p-2 absolute right-2 text-purple-900 text-opacity-70"
           (click)="showPassword = !showPassword"
         >
           <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
@@ -109,13 +109,13 @@
       >
         <p
           *ngIf="form.controls.password.hasError('required')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo es obligatorio
         </p>
         <p
           *ngIf="form.controls.password.hasError('minlength')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo debe tener más de 8 caracteres
         </p>
@@ -125,9 +125,9 @@
       <div class="relative">
         <input
           formControlName="confirmPassword"
-          placeholder="Confirm password"
+          placeholder="Confirmar Contraseña"
           type="password"
-          class="w-full rounded bg-gray-100 border-gray-300 border-2"
+          class="min-h-[auto] w-full border-transparent border-b border-b-purple-800 bg-transparent transition-all duration-200 ease-linear text-white placeholder:text-purple-900 hover:outline-none hover:border-white focus:border-white "
         />
       </div>
       <div
@@ -138,13 +138,13 @@
       >
         <p
           *ngIf="form.controls.confirmPassword.hasError('required')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo es obligatorio
         </p>
         <p
           *ngIf="form.controls.confirmPassword.hasError('minlength')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
+          class="font-medium text-purple-100 text-xs mt-1 ml-1"
         >
           Este campo debe tener más de 8 caracteres
         </p>
@@ -153,7 +153,7 @@
     <div *ngIf="form.controls.confirmPassword.touched">
       <p
         *ngIf="form.hasError('mismatch')"
-        class="font-medium text-gray-400 text-xs mt-1 ml-1"
+        class="font-medium text-purple-100 text-xs mt-1 ml-1"
       >
         La contraseña no es la misma
       </p>

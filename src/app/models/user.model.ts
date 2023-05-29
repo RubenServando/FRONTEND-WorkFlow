@@ -4,3 +4,8 @@ export interface User {
   email: string;
   photo: string;
 }
+
+export interface UserResponse<T> {
+  result: boolean;
+  user: T;
+}

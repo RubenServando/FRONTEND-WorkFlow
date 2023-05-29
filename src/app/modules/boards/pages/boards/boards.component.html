@@ -5,12 +5,12 @@
     </div>
   </div>
   <div class="w-full">
-    <div class="flex flex-wrap gap-10 items-center">
+    <div class="flex flex-wrap items-center gap-3">
       <a
         *ngFor="let board of boards"
         [routerLink]="'/app/boards/' + board.bid"
         [style.backgroundColor]="board.background"
-        class="min-w-[100px] max-w-[200px] mx-3 items-center bg-green-700 py-3 px-4 rounded text-white h-36 cursor-pointer hover:bg-green-800"
+        class="flex justify-center items-center min-w-[200px] max-w-[200px] p-10 rounded text-white cursor-pointer hover:bg-green-800"
       >
         {{ board.title }}
       </a>
