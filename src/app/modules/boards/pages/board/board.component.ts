@@ -31,7 +31,7 @@ import { Card } from '@models/card.model';
     `,
   ],
 })
-export class BoardComponent {
+export class BoardComponent implements OnInit {
   constructor(
     private dialog: Dialog,
     private boardService: BoardService,
@@ -140,7 +140,7 @@ export class BoardComponent {
   addCard(list: List) {
     this.cardService.addCard('Card', list.lid, 0, 'Description').subscribe({
       next: (response) => {
-        console.log(response);
+        this.getAllList()
       },
       error: () => {},
     });
