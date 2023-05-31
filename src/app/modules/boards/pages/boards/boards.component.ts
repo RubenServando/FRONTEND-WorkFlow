@@ -65,7 +65,6 @@ export class BoardsComponent implements OnInit {
       error: () => {},
     });
   }
-
   openDialogToUpdateBoard(board: Board) {
     const dialogRef = this.dialog.open(BoardDialogUpdate, {
       minWidth: '300px',
@@ -74,5 +73,9 @@ export class BoardsComponent implements OnInit {
         board: board,
       },
     });
+    dialogRef.closed.subscribe((output) => {
+      this.getAllBoard();
+    });
   }
+  
 }

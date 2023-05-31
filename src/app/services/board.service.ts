@@ -35,4 +35,19 @@ export class BoardService {
       headers: headers,
     });
   }
+
+  updateBoard(title: string, bg_type: string, background: string, bid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams()
+      .set('title', title)
+      .set('bg_type', bg_type)
+      .set('background', background);
+    return this.http.put<ApiResponse<Board>>(
+      `${this.apiUrl}/board/${bid}`,
+      params,
+      {
+        headers: headers,
+      }
+    );
+  }
 }

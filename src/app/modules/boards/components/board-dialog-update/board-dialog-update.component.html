@@ -6,63 +6,29 @@
   >
     <fa-icon [icon]="faClose"></fa-icon>
   </button>
-  <h1 mat-dialog-title>Actualizar Tablero</h1>
+  <h1>Actualizar Tablero</h1>
 
-  <div mat-dialog-content>
+  <div>
     <form [formGroup]="updateBoardForm">
-      <mat-form-field>
-        <mat-label>Nombre del Tablero</mat-label>
+      <div>
+        <label for="board-title">Nombre del Tablero</label>
         <input
-          matInput
+          id="board-title"
           formControlName="title"
           placeholder="Ingrese el nombre del tablero"
         />
-      </mat-form-field>
+      </div>
 
-      <mat-form-field>
-        <mat-label>Color de Fondo</mat-label>
+      <div>
+        <label for="board-background">Color de Fondo</label>
         <input
-          matInput
+          type="color"
+          id="board-background"
           formControlName="background"
-          placeholder="Ingrese el color en hexadecimal"
         />
-      </mat-form-field>
+      </div>
     </form>
   </div>
 
-  <div mat-dialog-actions>
-    <button mat-button >Cancelar</button>
-    <button mat-button cdkFocusInitial>Actualizar</button>
-  </div>
+  <app-btn  (click)="updateBoard()">Actualizar</app-btn>
 </div>
-
-<!--
-
-    <h1 mat-dialog-title>Actualizar Tablero</h1>
-
- 
-
-<div mat-dialog-content>
-<form [formGroup]="updateBoardForm">
-<mat-form-field>
-<mat-label>Nombre del Tablero</mat-label>
-<input matInput formControlName="title" placeholder="Ingrese el nombre del tablero">
-</mat-form-field>
-
- 
-
-    <mat-form-field>
-<mat-label>Color de Fondo</mat-label>
-<input matInput formControlName="background" placeholder="Ingrese el color en hexadecimal">
-</mat-form-field>
-</form>
-</div>
-
- 
-
-<div mat-dialog-actions>
-<button mat-button (click)="onCancel()">Cancelar</button>
-<button mat-button (click)="onUpdate()" cdkFocusInitial>Actualizar</button>
-</div>
-
-  -->
