@@ -1,4 +1,4 @@
-<div class="w-full h-full bg-green-700 px-4 pb-4">
+<div class="w-full h-full bg-transparent px-4 pb-4">
   <div class="flex flex-col h-full">
     <div class="container mx-10 flex mt-10">
       <div class="w-1/1 mr-1">
@@ -10,14 +10,14 @@
         <div class="mb-4"></div>
         <div>
           <app-btn color="light" class="shrink-0" (click)="deleteBoard()"
-            >Borrar Tablero</app-btn
+            >Borrar Tarea</app-btn
           >
         </div>
       </div>
-      <div class="flex flex-wrap gap-10 items-center">
+      <div class="flex flex-wrap gap-10">
         <div
           *ngFor="let list of lists"
-          class="min-w-[200px] max-w-[200px] mx-3 items-center bg-gray-300 py-3 px-4 rounded text-gray-700 h-60 min-h-[2.5rem] cursor-pointer"
+          class="min-w-[auto] max-w-[220px] mx-3 bg-purple-900 bg-opacity-30 py-3 px-4 text-sm uppercase font-medium rounded text-white h-60 min-h-[2.5rem] cursor-pointer"
         >
           {{ list.list.title }}
           <div class="flex flex-wrap gap-2 items-center">
@@ -25,26 +25,38 @@
               >Añadir tarea</app-btn
             >
             <div class="flex flex-wrap gap-2 items-center">
-              <app-btn color="light" class="shrink-0" (click)="deleteList(list.list)"
-                >Borrar columna</app-btn
+              <app-btn
+                color="light"
+                class="shrink-0"
+                (click)="deleteList(list.list)"
+                >Borrar Columna</app-btn
               >
-
-            <div
-              *ngFor="let card of list.cards"
-              (click)="openDialog(card)"
-              cdkDrag
-              class="bg-white shadow p-2 rounded mt-2 border-x-gray-300 cursor-pointer hover:bg-gray-500"
-            >
-              {{ card.title }}
+              <div
+                *ngFor="let card of list.cards"
+                (click)="openDialog(card)"
+                cdkDrag
+                class="flex flex-wrap gap-2 items-center"
+              >
+                {{ card.title }}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!--
+  <!--
+inline-block w-full rounded bg-purple-900 bg-opacity-30
+
+  -->
+
+  <!-- Color púrpura
+  class="cursor-default min-h-[auto] w-full mt-3 border-transparent border-b border-b-purple-800 bg-transparent transition-all 
+  duration-200 ease-linear text-purple-900 hover:outline-none hover:border-white focus:border-white"
+-->
+
+  <!--
       <div class="flex items-start w-full" cdkDropListGroup>
         <div class="rounded mx-6 bg-gray-200 w-72 p-2 mr-3">
           <div class="flex justify-center py-1">
@@ -109,7 +121,7 @@
         </div>
 -->
 
-<!--
+  <!--
 
   CODIGO EJEMPLO TRELLO
 ----------------------------------------------------------------------------
@@ -158,4 +170,4 @@
     </div>
   </div>
 </div>
--->
+--></div>
