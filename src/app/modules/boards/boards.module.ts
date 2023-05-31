@@ -10,13 +10,15 @@ import { BoardsRoutingModule } from './boards-routing.module';
 import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
 import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.component';
-
+import { BoardDialogUpdate } from './components/board-dialog-update/board-dialog-update.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     BoardsComponent,
     BoardComponent,
-    TodoDialogComponent
+    TodoDialogComponent,
+    BoardDialogUpdate,
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,10 @@ import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.compon
     DragDropModule,
     CdkAccordionModule,
     DialogModule,
-    FontAwesomeModule
-  ]
+    FontAwesomeModule,
+    MatDialogModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class BoardsModule { }
+export class BoardsModule {}
