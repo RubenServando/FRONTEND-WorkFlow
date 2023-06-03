@@ -35,4 +35,17 @@ export class ListService {
       headers: headers,
     });
   }
+
+  updateList(title: string, lid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams()
+      .set('title', title);
+    return this.http.put<ApiResponse<List>>(
+      `${this.apiUrl}/list/${lid}`,
+      params,
+      {
+        headers: headers,
+      }
+    );
+  }
 }

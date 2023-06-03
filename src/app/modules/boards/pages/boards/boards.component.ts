@@ -49,7 +49,7 @@ export class BoardsComponent implements OnInit {
   }
 
   addBoard() {
-    this.boardService.addBoard('tablero', BgType.Color, '#9e91d9').subscribe({
+    this.boardService.addBoard('Tablero', BgType.Color, '#9e91d9').subscribe({
       next: (response) => {
         this.boards.push(response.data);
       },

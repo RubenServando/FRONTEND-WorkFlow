@@ -20,14 +20,22 @@
           class="min-w-[auto] max-w-[300px] mx-3 bg-purple-900 bg-opacity-30 py-3 px-4 text-sm uppercase font-medium rounded text-white h-auto min-h-[2.5rem] cursor-pointer"
         >
           {{ list.list.title }}
+          <button class="p-3" (click)="openDialogToUpdateList(list.list)">
+            <div class="flex space-x-2 text-left">
+              <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
+            </div>
+          </button>
           <div class="min-w-[auto] max-w-[auto] py-2 gap-10">
             <app-btn class="shrink-0" (click)="addCard(list.list)"
               >Añadir tarea</app-btn
             >
+
             <div class="mb-4"></div>
+
             <app-btn class="shrink-0" (click)="deleteList(list.list)"
               >Borrar Columna</app-btn
             >
+
             <div class="mb-4"></div>
             <div
               class="bg-purple-900 bg-opacity-30 py-3 px-4 text-center text-sm uppercase font-medium rounded text-white mb-4 hover:bg-purple-900"
@@ -44,17 +52,7 @@
   </div>
 </div>
 
-<!--
-inline-block w-full rounded bg-purple-900 bg-opacity-30
-
-  -->
-
-<!-- Color púrpura
-  class="cursor-default min-h-[auto] w-full mt-3 border-transparent border-b border-b-purple-800 bg-transparent transition-all 
-  duration-200 ease-linear text-purple-900 hover:outline-none hover:border-white focus:border-white"
--->
-
-<!--
+<!-- Código para Drag and Drop de la aplicación de Platzi
       <div class="flex items-start w-full" cdkDropListGroup>
         <div class="rounded mx-6 bg-gray-200 w-72 p-2 mr-3">
           <div class="flex justify-center py-1">

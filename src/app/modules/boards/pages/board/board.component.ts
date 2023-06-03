@@ -4,20 +4,32 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Dialog } from '@angular/cdk/dialog';
+import {
+  faBox,
+  faWaveSquare,
+  faClock,
+  faAngleUp,
+  faAngleDown,
+  faHeart,
+  faBorderAll,
+  faUsers,
+  faGear,
+  faPencil,
+} from '@fortawesome/free-solid-svg-icons';
+import { DialogRef, Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
 import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.component';
 import { ToDo } from '@models/todo.model';
 import { BoardService } from '@services/board.service';
 import { ListService } from '@services/list.service';
 import { CardService } from '@services/card.service';
 import { List } from '@models/list.model';
+import { Card } from '@models/card.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ListUI } from '@models/listUI.model';
-import { forkJoin } from 'rxjs';
-import { Card } from '@models/card.model';
+import { forkJoin , of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { ListDialogUpdate } from '@boards/components/list-dialog-update/list-dialog-update.component';
 
 @Component({
   selector: 'app-board',
@@ -34,6 +46,17 @@ import { of } from 'rxjs';
   ],
 })
 export class BoardComponent implements OnInit {
+  faBox = faBox;
+  faWaveSquare = faWaveSquare;
+  faClock = faClock;
+  faAngleUp = faAngleUp;
+  faAngleDown = faAngleDown;
+  faHeart = faHeart;
+  faBorderAll = faBorderAll;
+  faUsers = faUsers;
+  faGear = faGear;
+  faPencil = faPencil;
+
   constructor(
     private dialog: Dialog,
     private boardService: BoardService,
@@ -44,7 +67,7 @@ export class BoardComponent implements OnInit {
   ) {}
 
   lists: ListUI[] = [];
-
+  /*
   todos: ToDo[] = [
     {
       id: '1',
@@ -75,7 +98,7 @@ export class BoardComponent implements OnInit {
       title: 'Tarea 2',
     },
   ];
-
+*/
   ngOnInit(): void {
     this.getAllList();
   }
@@ -184,6 +207,18 @@ export class BoardComponent implements OnInit {
         this.getAllList();
       },
       error: () => {},
+    });
+  }
+  openDialogToUpdateList(list: List) {
+    const dialogRef = this.dialog.open(ListDialogUpdate, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      data: {
+        list: list,
+      },
+    });
+    dialogRef.closed.subscribe((output) => {
+      this.getAllList();
     });
   }
 }

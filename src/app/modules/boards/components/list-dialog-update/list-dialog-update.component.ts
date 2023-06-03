@@ -15,11 +15,11 @@ import {
   faEdit,
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
-import { BoardService } from '@services/board.service';
-import { BgType, Board } from '@models/board.model';
+import { ListService } from '@services/list.service';
+import { List } from '@models/list.model';
 
 interface InputData {
-  board: Board;
+  list: List;
 }
 
 interface OutputData {
@@ -27,10 +27,10 @@ interface OutputData {
 }
 
 @Component({
-  selector: 'app-board-dialog-update',
-  templateUrl: './board-dialog-update.component.html',
+  selector: 'app-list-dialog-update',
+  templateUrl: './list-dialog-update.component.html',
 })
-export class BoardDialogUpdate {
+export class ListDialogUpdate {
   faClose = faClose;
   faCheckToSlot = faCheckToSlot;
   faBars = faBars;
@@ -43,20 +43,19 @@ export class BoardDialogUpdate {
   faBookOpen = faBookOpen;
   faEdit = faEdit;
   faPencil = faPencil;
-  updateBoardForm: FormGroup = this.formBuilder.group({
+  updateListForm: FormGroup = this.formBuilder.group({
     title: [''],
-    background: [''],
   });
 
-  board: Board;
+  list: List;
 
   constructor(
     private dialogRef: DialogRef<OutputData>,
-    private boardService: BoardService,
+    private listService: ListService,
     private formBuilder: FormBuilder,
     @Inject(DIALOG_DATA) data: InputData
   ) {
-    this.board = data.board;
+    this.list = data.list;
   }
 
   close() {
@@ -67,16 +66,13 @@ export class BoardDialogUpdate {
     this.dialogRef.close({ rta });
   }
 
-  updateBoard() {
-    let title = this.updateBoardForm.get('title')?.value || this.board.title;
-    let background = this.updateBoardForm.get('background')?.value || this.board.background;
-    this.boardService
-      .updateBoard(title, BgType.Color, background, this.board.bid)
-      .subscribe({
-        next: (response) => {
-          this.closeWithRta(true);          
-        },
-        error: () => {},
-      });
+  updateList() {
+    let title = this.updateListForm.get('title')?.value || this.list.title;
+    this.listService.updateList(title, this.list.lid).subscribe({
+      next: (response) => {
+        this.closeWithRta(true);
+      },
+      error: () => {},
+    });
   }
 }

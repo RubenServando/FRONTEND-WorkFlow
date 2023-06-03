@@ -12,7 +12,7 @@ import { BoardsComponent } from './pages/boards/boards.component';
 import { BoardComponent } from './pages/board/board.component';
 import { TodoDialogComponent } from './components/todo-dialog/todo-dialog.component';
 import { BoardDialogUpdate } from './components/board-dialog-update/board-dialog-update.component';
-
+import { ListDialogUpdate } from './components/list-dialog-update/list-dialog-update.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { BoardDialogUpdate } from './components/board-dialog-update/board-dialog
     BoardComponent,
     TodoDialogComponent,
     BoardDialogUpdate,
+    ListDialogUpdate
   ],
   imports: [
     CommonModule,

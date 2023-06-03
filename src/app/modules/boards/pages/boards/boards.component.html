@@ -14,7 +14,10 @@
         >
           {{ board.title }}
         </a>
-        <button class="absolute top-0 right-0 p-3" typeBtn="button" color="light" (click)="openDialogToUpdateBoard(board)">
+        <button
+          class="absolute top-0 right-0 p-3"
+          (click)="openDialogToUpdateBoard(board)"
+        >
           <span class="flex space-x-2 text-left">
             <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
           </span>
@@ -23,28 +26,3 @@
     </div>
   </div>
 </div>
-
-<!--
-      <app-btn typeBtn="button" color="light">
-        <span class="flex space-x-2 text-left">
-          <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
-          <span>Editar nombre</span>
-        </span>
-      </app-btn>
--->
-
-<!--
-
-          <button
-          class="absolute top-0 right-0 mt-2 mr-2 p-2 bg-green-500 text-white rounded-full hover:bg-green-800" 
-          [routerLink]="'/app/boards/edit/' + board.bid"
-        >
-          <i class="fas fa-pencil-alt"></i>
-        </button>
-
--->
-
-<!--
-
-  absolute top-0 right-0 mt-2 mr-2 p-2 bg-green-500 text-white rounded-full hover:bg-green-800"
--->
