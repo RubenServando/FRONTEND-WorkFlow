@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import {
   faClose,
@@ -44,6 +45,10 @@ export class TodoDialogComponent {
   faBookOpen = faBookOpen;
   faEdit = faEdit;
   faPencil = faPencil;
+  updateCardForm: FormGroup = this.formBuilder.group({
+    title: [''],
+    description: [''],
+  });
 
   card: Card;
 
@@ -52,6 +57,7 @@ export class TodoDialogComponent {
     private cardService: CardService,
     private location: Location,
     private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
     @Inject(DIALOG_DATA) data: InputData
   ) {
     this.card = data.card;
@@ -68,6 +74,18 @@ export class TodoDialogComponent {
   deleteCard() {
     this.cardService.deleteCard(this.card.cid).subscribe({
       next: () => {
+        this.closeWithRta(true);
+      },
+      error: () => {},
+    });
+  }
+
+  updateCard() {
+    let title = this.updateCardForm.get('title')?.value || this.card.title;
+    let description =
+      this.updateCardForm.get('description')?.value || this.card.description;
+    this.cardService.updateCard(title, description, this.card.cid).subscribe({
+      next: (response) => {
         this.closeWithRta(true);
       },
       error: () => {},

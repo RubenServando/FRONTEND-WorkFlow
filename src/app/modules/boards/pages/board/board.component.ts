@@ -170,7 +170,7 @@ export class BoardComponent implements OnInit {
   }
 
   addCard(list: List) {
-    this.cardService.addCard('Tarea', list.lid, 0, 'Description').subscribe({
+    this.cardService.addCard('Nueva tarea', list.lid, 0, 'Description').subscribe({
       next: (response) => {
         this.getAllList();
       },

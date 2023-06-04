@@ -43,4 +43,18 @@ export class CardService {
       headers: headers,
     });
   }
+
+  updateCard(title: string, description: string, cid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams()
+      .set('title', title)
+      .set('description', description);
+    return this.http.put<ApiResponse<Card>>(
+      `${this.apiUrl}/card/${cid}`,
+      params,
+      {
+        headers: headers,
+      }
+    );
+  }
 }

@@ -17,6 +17,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ListService } from '@services/list.service';
 import { List } from '@models/list.model';
+import { ActivatedRoute } from '@angular/router';
 
 interface InputData {
   list: List;
