@@ -67,38 +67,7 @@ export class BoardComponent implements OnInit {
   ) {}
 
   lists: ListUI[] = [];
-  /*
-  todos: ToDo[] = [
-    {
-      id: '1',
-      title: 'Tarea 1',
-    },
-    {
-      id: '2',
-      title: 'Tarea 2',
-    },
-    {
-      id: '3',
-      title: 'Tarea 3',
-    },
-  ];
-  doing: ToDo[] = [
-    {
-      id: '1',
-      title: 'Tarea 1',
-    },
-  ];
-  done: ToDo[] = [
-    {
-      id: '1',
-      title: 'Tarea 1',
-    },
-    {
-      id: '2',
-      title: 'Tarea 2',
-    },
-  ];
-*/
+  
   ngOnInit(): void {
     this.getAllList();
   }
@@ -170,7 +139,7 @@ export class BoardComponent implements OnInit {
   }
 
   addCard(list: List) {
-    this.cardService.addCard('Nueva tarea', list.lid, 0, 'Description').subscribe({
+    this.cardService.addCard('Tarea', list.lid, 0, '').subscribe({
       next: (response) => {
         this.getAllList();
       },

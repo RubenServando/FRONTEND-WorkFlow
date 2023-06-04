@@ -61,6 +61,10 @@ export class TodoDialogComponent {
     @Inject(DIALOG_DATA) data: InputData
   ) {
     this.card = data.card;
+    this.updateCardForm.patchValue({
+      title: this.card.title,
+      description: this.card.description,
+    });
   }
 
   close() {

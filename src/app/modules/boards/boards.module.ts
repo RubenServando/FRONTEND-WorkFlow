@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
@@ -30,6 +31,7 @@ import { ListDialogUpdate } from './components/list-dialog-update/list-dialog-up
     CdkAccordionModule,
     DialogModule,
     FontAwesomeModule,
+    FormsModule,
     ReactiveFormsModule
   ],
 })

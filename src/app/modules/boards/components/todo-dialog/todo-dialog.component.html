@@ -6,13 +6,7 @@
   >
     <fa-icon [icon]="faClose"></fa-icon>
   </button>
-  <div class="flex space-x-2 mb-5">
-    <fa-icon class="text-gray-800" [icon]="faCheckToSlot"></fa-icon>
-    <div class="flex flex-col">
-      <h3 class="text-lg font-semibold text-gray-800">{{ card.title }}</h3>
-    </div>
-  </div>
-  <!--------------------------------------------------------->
+  <div class="flex space-x-2 mb-5"></div>
   <div class="flex w-full gap-4">
     <form [formGroup]="updateCardForm">
       <div class="flex space-x-2 mb-5 w-4/6">
@@ -29,29 +23,12 @@
         <label class="text-lg font-semibold text-gray-800">Descripción</label>
         <textarea
           id="board-description"
-          formControlDesciption="description"
+          formControlName="description"
           rows="4"
           cols="30"
-
-        ></textarea><br><br>
+        ></textarea>
       </div>
     </form>
-    <!--
-    <div class="flex flex-auto space-y-2 flex-col">
-      <app-btn typeBtn="button" color="light">
-        <span class="flex space-x-2 text-left">
-          <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
-          <span>Editar nombre</span>
-        </span>
-      </app-btn>
-      <app-btn typeBtn="button" color="light">
-        <span class="flex space-x-2 text-left">
-          <fa-icon class="text-gray-800" [icon]="faEdit"></fa-icon>
-          <span>Editar descripción</span>
-        </span>
-      </app-btn>
-    </div>
-    -->
   </div>
   <div class="mb-5"></div>
   <app-btn (click)="updateCard()">Actualizar</app-btn>
