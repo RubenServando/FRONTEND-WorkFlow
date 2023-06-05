@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 import { ProfileRoutingModule } from './profile-routing.module';
@@ -14,7 +15,8 @@ import { BackgroundComponent } from './components/background/background.componen
     BackgroundComponent],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class ProfileModule { }

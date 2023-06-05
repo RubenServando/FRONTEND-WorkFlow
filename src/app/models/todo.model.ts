@@ -3,7 +3,7 @@ export interface ToDo {
   title: string;
 }
 
-export interface Column {
+export interface List {
   title: string;
   todos: ToDo[];
 }

@@ -24,12 +24,9 @@ export class BoardService {
 
   getAllBoard() {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
-    return this.http.get<ApiResponse<[Board]>>(
-      `${this.apiUrl}/board/`,
-      {
-        headers: headers,
-      }
-    );
+    return this.http.get<ApiResponse<[Board]>>(`${this.apiUrl}/board/`, {
+      headers: headers,
+    });
   }
 
   deleteBoard(bid: string) {
@@ -37,5 +34,20 @@ export class BoardService {
     return this.http.delete<ApiResponse<null>>(`${this.apiUrl}/board/${bid}`, {
       headers: headers,
     });
+  }
+
+  updateBoard(title: string, bg_type: string, background: string, bid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams()
+      .set('title', title)
+      .set('bg_type', bg_type)
+      .set('background', background);
+    return this.http.put<ApiResponse<Board>>(
+      `${this.apiUrl}/board/${bid}`,
+      params,
+      {
+        headers: headers,
+      }
+    );
   }
 }

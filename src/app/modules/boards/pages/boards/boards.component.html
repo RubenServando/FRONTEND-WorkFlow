@@ -6,22 +6,23 @@
   </div>
   <div class="w-full">
     <div class="flex flex-wrap items-center gap-3">
-      <a
-        *ngFor="let board of boards"
-        [routerLink]="'/app/boards/' + board.bid"
-        [style.backgroundColor]="board.background"
-        class="flex justify-center items-center min-w-[200px] max-w-[200px] p-10 rounded text-white cursor-pointer hover:bg-green-800"
-      >
-        {{ board.title }}
-      </a>
+      <div *ngFor="let board of boards" class="relative">
+        <a
+          [routerLink]="'/app/boards/' + board.bid"
+          [style.backgroundColor]="board.background"
+          class="flex justify-center items-center min-w-[200px] max-w-[200px] p-10 rounded text-sm font-medium uppercase text-white cursor-pointer"
+        >
+          {{ board.title }}
+        </a>
+        <button
+          class="absolute top-0 right-0 p-3"
+          (click)="openDialogToUpdateBoard(board)"
+        >
+          <span class="flex space-x-2 text-left">
+            <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
-
-<!--
-    <div class="flex grow items-start w-full h-full overflow-x-scroll" cdkDropListGroup>
-      <div class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0" *ngFor="let column of columns">
-        <div class="flex justify-between py-1">
-        <h3 class="text-sm font-bold ml-2">{{ column.title }}</h3>
-    </div>
--->

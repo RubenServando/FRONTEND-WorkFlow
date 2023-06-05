@@ -6,12 +6,17 @@
   >
     <fa-icon [icon]="faClose"></fa-icon>
   </button>
-  <div class="flex space-x-2 mb-5"></div>
+  <div class="flex space-x-2 mb-5">
+    <fa-icon class="text-gray-800" [icon]="faCheckToSlot"></fa-icon>
+    <div class="flex flex-col font-medium">
+      <h3 class="text-lg font-semibold text-gray-800">Actualizar Tablero</h3>
+    </div>
+</div>
   <div class="flex w-full gap-4">
-    <form [formGroup]="updateCardForm">
+    <form [formGroup]="updateBoardForm">
       <div class="flex space-x-2 mb-5 w-4/6">
         <fa-icon class="text-gray-800" [icon]="faBars"></fa-icon>
-        <label class="text-lg font-semibold text-gray-800">Nombre</label>
+        <label class="text-lg font-semibold text-gray-800" for="board-title">Nombre</label>
         <input
           id="board-title"
           formControlName="title"
@@ -20,18 +25,15 @@
       </div>
       <div class="flex w-full gap-4">
         <fa-icon class="text-gray-800" [icon]="faBars"></fa-icon>
-        <label class="text-lg font-semibold text-gray-800">Descripción</label>
-        <textarea
-          id="board-description"
-          formControlName="description"
-          rows="4"
-          cols="30"
-        ></textarea>
+        <label class="text-lg font-semibold text-gray-800" for="board-background">Color de Fondo</label>
+        <input
+          type="color"
+          id="board-background"
+          formControlName="background"
+        />
       </div>
     </form>
   </div>
   <div class="mb-5"></div>
-  <app-btn (click)="updateCard()">Actualizar</app-btn>
-  <div class="mb-5"></div>
-  <app-btn (click)="deleteCard()">Borrar</app-btn>
+  <app-btn (click)="updateBoard()">Actualizar</app-btn>
 </div>

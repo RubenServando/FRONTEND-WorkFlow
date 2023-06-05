@@ -9,13 +9,15 @@ import {
   faBorderAll,
   faUsers,
   faGear,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { faTrello } from '@fortawesome/free-brands-svg-icons';
-
+import { Dialog } from '@angular/cdk/dialog';
 import { HttpClient } from '@angular/common/http';
 import { BoardService } from '@services/board.service';
 import { BgType, Board } from '@models/board.model';
 import { OnInit } from '@angular/core';
+import { BoardDialogUpdate } from '@boards/components/board-dialog-update/board-dialog-update.component';
 
 @Component({
   selector: 'app-boards',
@@ -32,8 +34,13 @@ export class BoardsComponent implements OnInit {
   faBorderAll = faBorderAll;
   faUsers = faUsers;
   faGear = faGear;
+  faPencil = faPencil;
 
-  constructor(private http: HttpClient, private boardService: BoardService) {}
+  constructor(
+    private http: HttpClient,
+    private boardService: BoardService,
+    private dialog: Dialog
+  ) {}
 
   boards: Board[] = [];
 
@@ -42,7 +49,7 @@ export class BoardsComponent implements OnInit {
   }
 
   addBoard() {
-    this.boardService.addBoard('tablero', BgType.Color, '#16803d').subscribe({
+    this.boardService.addBoard('Tablero', BgType.Color, '#9e91d9').subscribe({
       next: (response) => {
         this.boards.push(response.data);
       },
@@ -58,4 +65,17 @@ export class BoardsComponent implements OnInit {
       error: () => {},
     });
   }
+  openDialogToUpdateBoard(board: Board) {
+    const dialogRef = this.dialog.open(BoardDialogUpdate, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      data: {
+        board: board,
+      },
+    });
+    dialogRef.closed.subscribe((output) => {
+      this.getAllBoard();
+    });
+  }
+  
 }
