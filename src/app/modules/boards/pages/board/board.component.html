@@ -29,17 +29,15 @@
               <fa-icon class="text-gray-800" [icon]="faPencil"></fa-icon>
             </div>
           </button>
+
+          <button class="p-3" (click)="deleteList(list.list)">
+            <fa-icon class="text-gray-800" [icon]="faTrashCan"></fa-icon>
+          </button>
+
           <div class="min-w-[auto] max-w-[auto] py-2 gap-10">
             <app-btn class="shrink-0" (click)="addCard(list.list)"
               >Añadir tarea</app-btn
             >
-
-            <div class="mb-4"></div>
-
-            <app-btn class="shrink-0" (click)="deleteList(list.list)"
-              >Borrar Columna</app-btn
-            >
-
             <div class="mb-4"></div>
             <div
               class="bg-purple-900 bg-opacity-30 py-3 px-4 text-center text-sm uppercase font-medium rounded text-white mb-4 hover:bg-purple-900"

@@ -14,6 +14,7 @@ import {
   faBorderAll,
   faUsers,
   faGear,
+  faTrashCan,
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { DialogRef, Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
@@ -55,6 +56,7 @@ export class BoardComponent implements OnInit {
   faBorderAll = faBorderAll;
   faUsers = faUsers;
   faGear = faGear;
+  faTrashCan = faTrashCan;
   faPencil = faPencil;
 
   constructor(
