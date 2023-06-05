@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '@services/users.service';
 import {User, UserResponse} from '@models/user.model';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
+
 
 @Component({
   selector: 'app-profile-form',
@@ -38,8 +40,6 @@ export class ProfileFormComponent implements OnInit {
       this.user = userData.user;
       console.log(this.user)
     });  }
-
-
 
   editProfile() {
     this.showProfile = false;
