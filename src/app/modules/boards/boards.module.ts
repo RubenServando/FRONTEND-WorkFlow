@@ -14,6 +14,7 @@ import { BoardComponent } from './pages/activity-task/activity-task.component';
 import { TodoDialogComponent } from './components/task-dialog/task-dialog.component';
 import { BoardDialogUpdate } from './components/board-dialog-update/board-dialog-update.component';
 import { ListDialogUpdate } from './components/list-dialog-update/list-dialog-update.component';
+import { AddMemberDialog } from './components/add-member-dialog/add-member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ListDialogUpdate } from './components/list-dialog-update/list-dialog-up
     TodoDialogComponent,
     BoardDialogUpdate,
     ListDialogUpdate,
+    AddMemberDialog,
   ],
   imports: [
     CommonModule,

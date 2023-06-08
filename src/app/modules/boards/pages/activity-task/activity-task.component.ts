@@ -31,6 +31,7 @@ import { ListUI } from '@models/listUI.model';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ListDialogUpdate } from '@boards/components/list-dialog-update/list-dialog-update.component';
+import { AddMemberDialog } from '@boards/components/add-member-dialog/add-member-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -192,4 +193,17 @@ export class BoardComponent implements OnInit {
       this.getAllList();
     });
   }
+
+  openAddMemberDialog() {
+    let urlSegments = this.route.snapshot.url;
+    let bid = urlSegments[urlSegments.length - 1].path;
+    const dialogRef = this.dialog.open(AddMemberDialog, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      data: {
+        bid: bid,
+      },
+    });
+  }
+
 }
