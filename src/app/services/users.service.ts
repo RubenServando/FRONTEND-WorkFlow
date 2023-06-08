@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, UserResponse } from '@models/user.model';
+import { User, UserResponse, UserEmailResponse } from '@models/user.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
@@ -29,6 +29,13 @@ export class UsersService {
     return decodeToken.email ? decodeToken.email : '';
   }
 
+  getUserByEmail(email: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    return this.http.get<UserEmailResponse<User>>(
+      `${this.apiUrl}/user/email/${email}`,
+      {
+        headers: headers,
+      }
+    );
+  }
 }
-
-

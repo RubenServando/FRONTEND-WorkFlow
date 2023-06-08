@@ -9,3 +9,7 @@ export interface UserResponse<T> {
   result: boolean;
   user: T;
 }
+
+export interface UserEmailResponse<T> {
+  data: [T];
+}

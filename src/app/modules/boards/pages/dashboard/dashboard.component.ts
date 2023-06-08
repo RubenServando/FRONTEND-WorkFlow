@@ -21,7 +21,7 @@ import { BoardDialogUpdate } from '@boards/components/board-dialog-update/board-
 
 @Component({
   selector: 'app-boards',
-  templateUrl: './boards.component.html',
+  templateUrl: './dashboard.component.html',
 })
 export class BoardsComponent implements OnInit {
   faTrello = faTrello;
