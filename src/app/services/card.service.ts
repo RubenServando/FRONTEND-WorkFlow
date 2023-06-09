@@ -57,4 +57,14 @@ export class CardService {
       }
     );
   }
+  
+  updatePosCard(position: number, lid: string, cid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams()
+      .set('lid', lid)
+      .set('position', position);
+    return this.http.post<ApiResponse<null>>(`${this.apiUrl}/card/${cid}`, params, {
+      headers: headers,
+    });
+  }
 }

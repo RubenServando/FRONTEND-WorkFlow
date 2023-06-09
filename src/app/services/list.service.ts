@@ -48,4 +48,17 @@ export class ListService {
       }
     );
   }
+
+  updatePosList(position: number, lid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams()
+      .set('position', position);
+    return this.http.put<ApiResponse<null>>(
+      `${this.apiUrl}/list/${lid}`,
+      params,
+      {
+        headers: headers,
+      }
+    );
+  }
 }

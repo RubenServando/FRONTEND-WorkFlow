@@ -70,7 +70,7 @@ export class ListDialogUpdateComponent {
   updateList() {
     let title = this.updateListForm.get('title')?.value || this.list.title;
     this.listService.updateList(title, this.list.lid).subscribe({
-      next: (response) => {
+      next: () => {
         this.closeWithRta(true);
       },
       error: () => {},
