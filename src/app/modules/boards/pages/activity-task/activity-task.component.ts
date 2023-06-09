@@ -198,4 +198,23 @@ export class BoardComponent implements OnInit {
       },
     });
   }
+
+  drop(event: CdkDragDrop<Card[]>, listUI: ListUI) {
+    console.log(listUI)
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      this.updateCardPositions(listUI);
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+      this.updateCardPositionsInBothLists(event.previousContainer.data, event.container.data);
+    }
+  }
+  
+  updateCardPositions(listUI: ListUI) {
+    
+  }
+  
+  updateCardPositionsInBothLists(previousList: Card[], newList: Card[]) {
+  }
+  
 }

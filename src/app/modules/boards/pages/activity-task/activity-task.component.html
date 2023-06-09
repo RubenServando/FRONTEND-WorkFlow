@@ -23,9 +23,12 @@
           >
         </div>
       </div>
-      <div class="flex flex-wrap gap-10">
+      <div class="flex flex-wrap gap-10" cdkDropListGroup>
         <div
-          *ngFor="let list of lists"
+        *ngFor="let list of lists; let i = index"
+        cdkDropList
+        [cdkDropListData]="list.cards"
+        (cdkDropListDropped)="drop($event, list)"
           class="min-w-[auto] max-w-[300px] mx-3 bg-purple-900 bg-opacity-30 py-3 px-4 text-sm uppercase font-medium rounded text-white h-auto min-h-[2.5rem] cursor-pointer"
         >
           {{ list.list.title }}
