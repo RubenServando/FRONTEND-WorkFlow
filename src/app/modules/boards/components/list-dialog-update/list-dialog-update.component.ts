@@ -31,7 +31,7 @@ interface OutputData {
   selector: 'app-list-dialog-update',
   templateUrl: './list-dialog-update.component.html',
 })
-export class ListDialogUpdate {
+export class ListDialogUpdateComponent {
   faClose = faClose;
   faCheckToSlot = faCheckToSlot;
   faBars = faBars;

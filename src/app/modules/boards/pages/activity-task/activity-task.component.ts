@@ -30,8 +30,8 @@ import { Location } from '@angular/common';
 import { ListUI } from '@models/listUI.model';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ListDialogUpdate } from '@boards/components/list-dialog-update/list-dialog-update.component';
-import { AddMemberDialog } from '@boards/components/add-member-dialog/add-member-dialog.component';
+import { ListDialogUpdateComponent } from '@boards/components/list-dialog-update/list-dialog-update.component';
+import { AddMemberDialogComponent } from '@boards/components/add-member-dialog/add-member-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -75,29 +75,14 @@ export class BoardComponent implements OnInit {
     this.getAllList();
   }
 
-  drop(event: CdkDragDrop<ToDo[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  }
-
   addList() {
     let urlSegments = this.route.snapshot.url;
     let bid = urlSegments[urlSegments.length - 1].path;
-    this.listService.addList('Columna', 0, bid).subscribe({
-      next: (response) => {
-        this.lists.push({ list: response.data, cards: [] });
+    let maxPosition = Math.max(...this.lists.map((l) => l.list.position), 0);
+
+    this.listService.addList('Columna', maxPosition + 1, bid).subscribe({
+      next: () => {
+        this.getAllList();
       },
       error: () => {},
     });
@@ -111,20 +96,23 @@ export class BoardComponent implements OnInit {
         this.lists = [];
         try {
           const listData = response.data;
-          console.log(listData);
-
+          listData.sort((a, b) => a.position - b.position);
           const cardRequests = listData.map((item) =>
             this.cardService
               .getCardsFromList(item.lid)
               .pipe(catchError(() => of({ data: [] })))
           );
-
           forkJoin(cardRequests).subscribe({
             next: (cardResponses) => {
-              this.lists = listData.map((item, index) => ({
-                list: item,
-                cards: cardResponses[index].data || [],
-              }));
+              this.lists = listData.map((item, index) => {
+                let cards = cardResponses[index].data || [];
+                cards.sort((a, b) => a.position - b.position);
+
+                return {
+                  list: item,
+                  cards: cards,
+                };
+              });
             },
             error: () => {},
           });
@@ -137,13 +125,18 @@ export class BoardComponent implements OnInit {
   }
 
   getCardsFromList(lid: string) {
-    console.log(lid);
     return this.cardService.getCardsFromList(lid);
   }
 
   addCard(list: List) {
-    this.cardService.addCard('Tarea', list.lid, 0, '').subscribe({
-      next: (response) => {
+    let currentList = this.lists.find((l) => l.list.lid === list.lid);
+    if (!currentList) {
+      return;
+    }
+
+    let maxPosition = Math.max(...currentList.cards.map((c) => c.position), 0);
+    this.cardService.addCard('Tarea', list.lid, maxPosition + 1, '').subscribe({
+      next: () => {
         this.getAllList();
       },
       error: () => {},
@@ -182,7 +175,7 @@ export class BoardComponent implements OnInit {
     });
   }
   openDialogToUpdateList(list: List) {
-    const dialogRef = this.dialog.open(ListDialogUpdate, {
+    const dialogRef = this.dialog.open(ListDialogUpdateComponent, {
       minWidth: '300px',
       maxWidth: '50%',
       data: {
@@ -197,7 +190,7 @@ export class BoardComponent implements OnInit {
   openAddMemberDialog() {
     let urlSegments = this.route.snapshot.url;
     let bid = urlSegments[urlSegments.length - 1].path;
-    const dialogRef = this.dialog.open(AddMemberDialog, {
+    const dialogRef = this.dialog.open(AddMemberDialogComponent, {
       minWidth: '300px',
       maxWidth: '50%',
       data: {
@@ -205,5 +198,4 @@ export class BoardComponent implements OnInit {
       },
     });
   }
-
 }
