@@ -30,7 +30,7 @@ interface OutputData {
 
 @Component({
   selector: 'app-todo-dialog',
-  templateUrl: './todo-dialog.component.html',
+  templateUrl: './task-dialog.component.html',
 })
 export class TodoDialogComponent {
   faClose = faClose;

@@ -18,7 +18,7 @@ import {
   faPencil,
 } from '@fortawesome/free-solid-svg-icons';
 import { DialogRef, Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
-import { TodoDialogComponent } from '@boards/components/todo-dialog/todo-dialog.component';
+import { TodoDialogComponent } from '@boards/components/task-dialog/task-dialog.component';
 import { ToDo } from '@models/todo.model';
 import { BoardService } from '@services/board.service';
 import { ListService } from '@services/list.service';
@@ -28,13 +28,14 @@ import { Card } from '@models/card.model';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ListUI } from '@models/listUI.model';
-import { forkJoin , of } from 'rxjs';
+import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ListDialogUpdate } from '@boards/components/list-dialog-update/list-dialog-update.component';
+import { AddMemberDialog } from '@boards/components/add-member-dialog/add-member-dialog.component';
 
 @Component({
   selector: 'app-board',
-  templateUrl: './board.component.html',
+  templateUrl: './activity-task.component.html',
   styles: [
     `
       .cdk-drop-list-dragging .cdk-drag {
@@ -69,7 +70,7 @@ export class BoardComponent implements OnInit {
   ) {}
 
   lists: ListUI[] = [];
-  
+
   ngOnInit(): void {
     this.getAllList();
   }
@@ -192,4 +193,17 @@ export class BoardComponent implements OnInit {
       this.getAllList();
     });
   }
+
+  openAddMemberDialog() {
+    let urlSegments = this.route.snapshot.url;
+    let bid = urlSegments[urlSegments.length - 1].path;
+    const dialogRef = this.dialog.open(AddMemberDialog, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      data: {
+        bid: bid,
+      },
+    });
+  }
+
 }

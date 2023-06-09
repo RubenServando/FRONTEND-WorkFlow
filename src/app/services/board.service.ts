@@ -50,4 +50,16 @@ export class BoardService {
       }
     );
   }
+
+  addMemberToBoard(uid: string, bid: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams().set('uid', uid);
+    return this.http.post<ApiResponse<null>>(
+      `${this.apiUrl}/board/${bid}/member`,
+      params,
+      {
+        headers: headers,
+      }
+    );
+  }
 }
