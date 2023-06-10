@@ -53,7 +53,7 @@ export class ListService {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
     let params = new HttpParams()
       .set('position', position);
-    return this.http.put<ApiResponse<null>>(
+    return this.http.patch<ApiResponse<null>>(
       `${this.apiUrl}/list/${lid}`,
       params,
       {

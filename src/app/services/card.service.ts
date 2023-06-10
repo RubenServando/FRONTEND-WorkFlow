@@ -62,7 +62,7 @@ export class CardService {
     let params = new HttpParams()
       .set('lid', lid)
       .set('position', position);
-    return this.http.post<ApiResponse<null>>(`${this.apiUrl}/card/${cid}`, params, {
+    return this.http.patch<ApiResponse<null>>(`${this.apiUrl}/card/${cid}`, params, {
       headers: headers,
     });
   }

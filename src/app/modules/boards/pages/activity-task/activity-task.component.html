@@ -28,6 +28,7 @@
         *ngFor="let list of lists; let i = index"
         cdkDropList
         [cdkDropListData]="list.cards"
+        [id]="list.list.lid"
         (cdkDropListDropped)="drop($event)"
           class="min-w-[auto] max-w-[300px] mx-3 bg-purple-900 bg-opacity-30 py-3 px-4 text-sm uppercase font-medium rounded text-white h-auto min-h-[2.5rem] cursor-pointer"
         >
@@ -51,6 +52,7 @@
               class="bg-purple-900 bg-opacity-30 py-3 px-4 text-center text-sm uppercase font-medium rounded text-white mb-4 hover:bg-purple-900"
               cdkDrag
               *ngFor="let card of list.cards"
+              [cdkDragData]="card"
               (click)="openDialog(card)"
             >
               {{ card.title }}
