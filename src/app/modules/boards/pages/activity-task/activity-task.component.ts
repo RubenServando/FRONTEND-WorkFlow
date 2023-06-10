@@ -78,7 +78,7 @@ export class BoardComponent implements OnInit {
   addList() {
     let urlSegments = this.route.snapshot.url;
     let bid = urlSegments[urlSegments.length - 1].path;
-    let maxPosition = Math.max(...this.lists.map((l) => l.list.position), 0);
+    let maxPosition = Math.max(...this.lists.map((l) => l.list.position), -1);
 
     this.listService.addList('Columna', maxPosition + 1, bid).subscribe({
       next: () => {
@@ -134,7 +134,7 @@ export class BoardComponent implements OnInit {
       return;
     }
 
-    let maxPosition = Math.max(...currentList.cards.map((c) => c.position), 0);
+    let maxPosition = Math.max(...currentList.cards.map((c) => c.position), -1);
     this.cardService.addCard('Tarea', list.lid, maxPosition + 1, '').subscribe({
       next: () => {
         this.getAllList();
