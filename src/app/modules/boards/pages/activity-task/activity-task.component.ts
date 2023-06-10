@@ -129,13 +129,7 @@ export class BoardComponent implements OnInit {
   }
 
   addCard(list: List) {
-    let currentList = this.lists.find((l) => l.list.lid === list.lid);
-    if (!currentList) {
-      return;
-    }
-
-    let maxPosition = Math.max(...currentList.cards.map((c) => c.position), -1);
-    this.cardService.addCard('Tarea', list.lid, maxPosition + 1, '').subscribe({
+    this.cardService.addCard('Tarea', list.lid, '').subscribe({
       next: () => {
         this.getAllList();
       },
@@ -199,22 +193,48 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<Card[]>, listUI: ListUI) {
-    console.log(listUI)
+  drop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      this.updateCardPositions(listUI);
+  
+      const movedCard: Card = event.container.data[event.currentIndex];
+      const currentList: ListUI | undefined = this.lists.find(l => l.list.lid === movedCard.lid);
+  
+      if (!currentList) {
+        return;
+      }
+  
+      this.cardService.updateCardPosition(event.currentIndex, movedCard.lid, movedCard.cid).subscribe(() => {
+        for (let i = event.currentIndex + 1; i < currentList.cards.length; i++) {
+          this.cardService.updateCardPosition(i, currentList.cards[i].lid, currentList.cards[i].cid).subscribe(() => {});
+        }
+      });
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-      this.updateCardPositionsInBothLists(event.previousContainer.data, event.container.data);
+      
+      const movedCard: Card = event.container.data[event.currentIndex];
+      const newList: ListUI | undefined = this.lists.find(l => l.list.lid === movedCard.lid);
+  
+      if (!newList) {
+        return;
+      }
+  
+      this.cardService.updateCardPosition(event.currentIndex, newList.list.lid, movedCard.cid).subscribe(() => {
+        for (let i = event.currentIndex + 1; i < newList.cards.length; i++) {
+          this.cardService.updateCardPosition(i, newList.cards[i].lid, newList.cards[i].cid).subscribe(() => {});
+        }
+      });
+  
+      const oldList: ListUI | undefined = this.lists.find(l => l.list.lid === event.previousContainer.data[0].lid);
+      if (oldList) {
+        for (let i = event.previousIndex; i < oldList.cards.length; i++) {
+          this.cardService.updateCardPosition(i, oldList.cards[i].lid, oldList.cards[i].cid).subscribe(() => {});
+        }
+      }
     }
   }
   
-  updateCardPositions(listUI: ListUI) {
-    
-  }
   
-  updateCardPositionsInBothLists(previousList: Card[], newList: Card[]) {
-  }
+  
   
 }

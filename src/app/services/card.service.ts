@@ -11,12 +11,11 @@ export class CardService {
   apiUrl = environment.API_URL;
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-  addCard(title: string, lid: string, position: number, description: string) {
+  addCard(title: string, lid: string, description: string) {
     let headers = new HttpHeaders().set('token', this.tokenService.getToken());
     let params = new HttpParams()
       .set('title', title)
       .set('lid', lid)
-      .set('position', position)
       .set('description', description);
     return this.http.post<ApiResponse<Card>>(`${this.apiUrl}/card/`, params, {
       headers: headers,
