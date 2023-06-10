@@ -32,6 +32,7 @@ import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ListDialogUpdate } from '@boards/components/list-dialog-update/list-dialog-update.component';
 import { AddMemberDialog } from '@boards/components/add-member-dialog/add-member-dialog.component';
+import { DialogoErrorComponent } from '@boards/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-board',
@@ -169,7 +170,9 @@ export class BoardComponent implements OnInit {
       next: () => {
         this.location.back();
       },
-      error: () => {},
+      error: () => {
+        this.OpenShowError();
+      },
     });
   }
 
@@ -178,7 +181,9 @@ export class BoardComponent implements OnInit {
       next: () => {
         this.getAllList();
       },
-      error: () => {},
+      error: () => {
+        this.OpenShowError();
+      },
     });
   }
   openDialogToUpdateList(list: List) {
@@ -206,4 +211,10 @@ export class BoardComponent implements OnInit {
     });
   }
 
+  OpenShowError() {
+    const dialogRef = this.dialog.open(DialogoErrorComponent, {
+      minWidth: '300px',
+      maxWidth: '50%',
+    });
+  }
 }
