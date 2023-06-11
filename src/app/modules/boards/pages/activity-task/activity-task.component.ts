@@ -158,7 +158,7 @@ export class BoardComponent implements OnInit {
         this.location.back();
       },
       error: () => {
-        this.OpenShowError();
+        this.openShowError();
       },
     });
   }
@@ -169,7 +169,7 @@ export class BoardComponent implements OnInit {
         this.getAllList();
       },
       error: () => {
-        this.OpenShowError();
+        this.openShowError();
       },
     });
   }
@@ -207,7 +207,11 @@ export class BoardComponent implements OnInit {
 
   drop(event: CdkDragDrop<Card[]>): void {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -216,19 +220,23 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
     }
-    
+
     const cardId = event.item.data.cid;
-    
+
     const targetListId = event.container.id;
-    
-    const newPosition = event.container.data.findIndex(card => card.cid === cardId);
-    this.cardService.updateCardPosition(newPosition, targetListId, cardId).subscribe({
-      next: () => {
-        this.getAllList();
-      },
-      error: () => {
-        this.getAllList();
-      },
-    });
+
+    const newPosition = event.container.data.findIndex(
+      (card) => card.cid === cardId
+    );
+    this.cardService
+      .updateCardPosition(newPosition, targetListId, cardId)
+      .subscribe({
+        next: () => {
+          this.getAllList();
+        },
+        error: () => {
+          this.getAllList();
+        },
+      });
   }
 }
