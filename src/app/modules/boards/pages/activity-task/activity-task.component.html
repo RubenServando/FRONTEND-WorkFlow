@@ -23,9 +23,13 @@
           >
         </div>
       </div>
-      <div class="flex flex-wrap gap-10">
+      <div class="flex flex-wrap gap-10" cdkDropListGroup>
         <div
-          *ngFor="let list of lists"
+        *ngFor="let list of lists; let i = index"
+        cdkDropList
+        [cdkDropListData]="list.cards"
+        [id]="list.list.lid"
+        (cdkDropListDropped)="drop($event)"
           class="min-w-[auto] max-w-[300px] mx-3 bg-purple-900 bg-opacity-30 py-3 px-4 text-sm uppercase font-medium rounded text-white h-auto min-h-[2.5rem] cursor-pointer"
         >
           {{ list.list.title }}
@@ -48,6 +52,7 @@
               class="bg-purple-900 bg-opacity-30 py-3 px-4 text-center text-sm uppercase font-medium rounded text-white mb-4 hover:bg-purple-900"
               cdkDrag
               *ngFor="let card of list.cards"
+              [cdkDragData]="card"
               (click)="openDialog(card)"
             >
               {{ card.title }}
@@ -58,119 +63,3 @@
     </div>
   </div>
 </div>
-
-<!-- Código para Drag and Drop de la aplicación de Platzi
-      <div class="flex items-start w-full" cdkDropListGroup>
-        <div class="rounded mx-6 bg-gray-200 w-72 p-2 mr-3">
-          <div class="flex justify-center py-1">
-            <h3 class="text-gray-700 font-semibold ml-2">Hacer</h3>
-          </div>
-          <div
-            class="text-gray-700 mt-2 min-h-[2.5rem]"
-            cdkDropList
-            (cdkDropListDropped)="drop($event)"
-            [cdkDropListData]="todos"
-          >
-            <div
-              *ngFor="let todo of todos"
-              cdkDrag
-              class="bg-white shadow p-2 rounded mt-2 border-x-gray-300 cursor-pointer hover:bg-gray-500"
-            >
-              {{ todo.title }}
-            </div>
-          </div>
-        </div>
-
-        <div class="rounded mx-3 bg-gray-200 w-72 p-2 mr-3">
-          <div class="flex justify-center py-1">
-            <h3 class="text-gray-700 font-semibold ml-2">Haciendo</h3>
-          </div>
-          <div
-            class="text-gray-700 mt-2 min-h-[2.5rem]"
-            cdkDropList
-            (cdkDropListDropped)="drop($event)"
-            [cdkDropListData]="doing"
-          >
-            <div
-              *ngFor="let todo of doing"
-              cdkDrag
-              class="bg-white shadow p-2 rounded mt-2 border-x-gray-300 cursor-pointer hover:bg-gray-500"
-            >
-              {{ todo.title }}
-            </div>
-          </div>
-        </div>
-
-        <div class="w1 mr-1">
-          <div class="rounded mx-3 bg-gray-200 w-72 p-2 mr-3">
-            <div class="flex justify-center py-1">
-              <h3 class="text-gray-700 font-semibold ml-2">Hecho</h3>
-            </div>
-            <div
-              class="text-gray-700 mt-2 min-h-[2.5rem]"
-              cdkDropList
-              (cdkDropListDropped)="drop($event)"
-              [cdkDropListData]="done"
-            >
-              <div
-                *ngFor="let todo of done"
-                cdkDrag
-                class="bg-white shadow p-2 rounded mt-2 border-x-gray-300 cursor-pointer hover:bg-gray-500"
-              >
-                {{ todo.title }}
-              </div>
-            </div>
-          </div>
-        </div>
--->
-
-<!--
-
-  CODIGO EJEMPLO TRELLO
-----------------------------------------------------------------------------
-
-  <div class="w-full h-full bg-green-700 px-4 pb-4">
-  <div class="flex flex-col h-full">
-    <div class="container mx-10 flex mt-10">
-      <div class="w-1/1 mr-1">
-        <app-btn color="success" (click)="deleteBoard()">Borrar</app-btn>
-      </div>
-    </div>
-
-----------------------------------------------------------------------------
-
-    <div
-      class="flex grow items-start w-full h-full overflow-x-scroll"
-      cdkDropListGroup
-    >
-      <div
-        class="rounded bg-gray-200 w-72 p-2 mr-3 shrink-0"
-        *ngFor="let column of lists"
-      >
-        <div class="flex justify-between py-1">
-          <h3 class="text-sm font-bold ml-2">{{ column.title }}</h3>
-        </div>
-
-        <div
-          class="text-sm mt-2 min-h-[2.5rem]"
-          cdkDropList
-          (cdkDropListDropped)="drop($event)"
-          [cdkDropListData]="column.todos"
-        >
-          <div
-            (click)="openDialog(todo)"
-            *ngFor="let todo of column.todos"
-            cdkDrag
-            class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
-          >
-            {{ todo.title }}
-          </div>
-        </div>
-      </div>
-      <app-btn color="light" class="shrink-0" (click)="addList()"
-        >Añade columna</app-btn
-      >
-    </div>
-  </div>
-</div>
--->
