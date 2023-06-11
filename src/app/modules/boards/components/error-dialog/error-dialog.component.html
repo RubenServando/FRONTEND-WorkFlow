@@ -1,0 +1,16 @@
+<div class="p-6 bg-gray-100 relative rounded shadow">
+  <button
+    (click)="close()"
+    type="button"
+    class="absolute top-3 right-3 focus:outline-none p-2"
+  >
+    <fa-icon [icon]="faClose"></fa-icon>
+  </button>
+  <div class="flex space-x-2 mb-5">
+    <fa-icon class="text-gray-800" [icon]="faFrog"></fa-icon>
+    <div class="flex flex-col font-medium justify-self-auto">
+      <h3 class="text-lg font-semibold  text-gray-800">No puedo hacer eso!!</h3>
+      <h4 class="text-lg font-normal  text-gray-500">Primero elimine tareas</h4>
+    </div>
+  </div>
+</div>

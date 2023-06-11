@@ -30,6 +30,7 @@ import { Location } from '@angular/common';
 import { ListUI } from '@models/listUI.model';
 import { forkJoin, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { DialogoErrorComponent } from '@boards/components/error-dialog/error-dialog.component';
 import { ListDialogUpdateComponent } from '@boards/components/list-dialog-update/list-dialog-update.component';
 import { AddMemberDialogComponent } from '@boards/components/add-member-dialog/add-member-dialog.component';
 
@@ -156,7 +157,9 @@ export class BoardComponent implements OnInit {
       next: () => {
         this.location.back();
       },
-      error: () => {},
+      error: () => {
+        this.OpenShowError();
+      },
     });
   }
 
@@ -165,7 +168,9 @@ export class BoardComponent implements OnInit {
       next: () => {
         this.getAllList();
       },
-      error: () => {},
+      error: () => {
+        this.OpenShowError();
+      },
     });
   }
   openDialogToUpdateList(list: List) {
@@ -190,6 +195,13 @@ export class BoardComponent implements OnInit {
       data: {
         bid: bid,
       },
+    });
+  }
+
+  openShowError() {
+    const dialogRef = this.dialog.open(DialogoErrorComponent, {
+      minWidth: '300px',
+      maxWidth: '50%',
     });
   }
 
@@ -219,8 +231,4 @@ export class BoardComponent implements OnInit {
       },
     });
   }
-  
-  
-  
-  
 }
