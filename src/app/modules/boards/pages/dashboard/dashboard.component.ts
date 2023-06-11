@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
 import { BoardService } from '@services/board.service';
 import { BgType, Board } from '@models/board.model';
 import { OnInit } from '@angular/core';
-import { BoardDialogUpdate } from '@boards/components/board-dialog-update/board-dialog-update.component';
+import { BoardDialogUpdateComponent } from '@boards/components/board-dialog-update/board-dialog-update.component';
 
 @Component({
   selector: 'app-boards',
@@ -66,7 +66,7 @@ export class BoardsComponent implements OnInit {
     });
   }
   openDialogToUpdateBoard(board: Board) {
-    const dialogRef = this.dialog.open(BoardDialogUpdate, {
+    const dialogRef = this.dialog.open(BoardDialogUpdateComponent, {
       minWidth: '300px',
       maxWidth: '50%',
       data: {

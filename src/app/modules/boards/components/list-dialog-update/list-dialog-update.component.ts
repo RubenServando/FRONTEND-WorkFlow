@@ -31,7 +31,7 @@ interface OutputData {
   selector: 'app-list-dialog-update',
   templateUrl: './list-dialog-update.component.html',
 })
-export class ListDialogUpdate {
+export class ListDialogUpdateComponent {
   faClose = faClose;
   faCheckToSlot = faCheckToSlot;
   faBars = faBars;
@@ -70,7 +70,7 @@ export class ListDialogUpdate {
   updateList() {
     let title = this.updateListForm.get('title')?.value || this.list.title;
     this.listService.updateList(title, this.list.lid).subscribe({
-      next: (response) => {
+      next: () => {
         this.closeWithRta(true);
       },
       error: () => {},

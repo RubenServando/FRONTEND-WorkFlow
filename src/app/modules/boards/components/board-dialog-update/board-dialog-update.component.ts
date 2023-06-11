@@ -30,7 +30,7 @@ interface OutputData {
   selector: 'app-board-dialog-update',
   templateUrl: './board-dialog-update.component.html',
 })
-export class BoardDialogUpdate {
+export class BoardDialogUpdateComponent {
   faClose = faClose;
   faCheckToSlot = faCheckToSlot;
   faBars = faBars;
