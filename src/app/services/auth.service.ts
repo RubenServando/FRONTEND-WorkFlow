@@ -61,8 +61,8 @@ export class AuthService {
     );
   }
 
-  recovery(email: string) {
-    return this.http.post(`${this.apiUrl}/user/recovery`, { email });
+  reset(email: string) {
+    return this.http.post(`${this.apiUrl}/user/reset`, { email });
   }
 
   changePassword(token: string, newPassword: string) {

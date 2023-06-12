@@ -25,7 +25,7 @@ export class ForgotPasswordFormComponent {
     if (this.form.valid) {
       this.status = 'loading';
       const { email } = this.form.getRawValue();
-      this.authService.recovery(email)
+      this.authService.reset(email)
       .subscribe({
         next: () => {
           this.status = 'success';
