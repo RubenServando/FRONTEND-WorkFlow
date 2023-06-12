@@ -38,4 +38,31 @@ export class UsersService {
       }
     );
   }
+
+  changeEmail(email: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams().set('email', email);
+    return this.http.put<UserEmailResponse<null>>(
+      `${this.apiUrl}/user/info`,
+      params,
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  changePassword(password: string, uid: string, resetCode: string) {
+    let headers = new HttpHeaders().set('token', this.tokenService.getToken());
+    let params = new HttpParams().set('uid', uid).set('resetCode', resetCode);
+    return this.http.put<UserEmailResponse<User>>(
+      `${this.apiUrl}/user/reset`,
+      {
+        password: password,
+      },
+      {
+        headers: headers,
+        params: params,
+      }
+    );
+  }
 }

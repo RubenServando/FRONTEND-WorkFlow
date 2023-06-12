@@ -3,32 +3,24 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '@services/users.service';
 import {User, UserResponse} from '@models/user.model';
-import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
-
+import { ProfileDialogComponent } from '../profile-dialog/profile-dialog.component';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-profile-form',
   templateUrl: './profile-form.component.html'
 })
 export class ProfileFormComponent implements OnInit {
-  form: FormGroup;
   showProfile: boolean = false;
   user: User;
 
-
-  constructor(private fb: FormBuilder, private usersService: UsersService) {
-    this.form = this.fb.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
-    },
+  constructor(private dialog: Dialog, private fb: FormBuilder, private usersService: UsersService) {
     this.user = {
       uid: '',
       username: '',
       email: '',
       photo: '',
-    })
+    }
   };
 
   ngOnInit(): void {
@@ -41,7 +33,15 @@ export class ProfileFormComponent implements OnInit {
       console.log(this.user)
     });  }
 
-  editProfile() {
-    this.showProfile = false;
-  }
+  openProfileDialog() {
+    const dialogRef = this.dialog.open(ProfileDialogComponent, {
+      minWidth: '450px',
+      maxWidth: '50%',
+      data: {
+        user: this.user,
+      },
+    });
+    dialogRef.closed.subscribe(() => {
+      this.getProfile();
+    });  }
 }

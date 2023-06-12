@@ -10,7 +10,7 @@
         <a
           [routerLink]="'/app/boards/' + board.bid"
           [style.backgroundColor]="board.background"
-          class="flex justify-center items-center min-w-[200px] max-w-[200px] p-10 rounded text-sm font-medium uppercase text-white cursor-pointer"
+          class="flex justify-center items-center min-w-[200px] max-w-[200px] p-10 rounded text-sm font-medium uppercase text-white cursor-pointer hover:opacity-75 transition-opacity duration-300"
         >
           {{ board.title }}
         </a>

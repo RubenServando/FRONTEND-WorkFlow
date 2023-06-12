@@ -12,17 +12,13 @@
         </a>
       </div>
       <div>
-        <button
-          type="button"
-          class="flex rounded-md bg-purple-900 p-3 opacity-60 w-40 items-center justify-center hover:bg-transparent hover:text-fuchsia-900 text-white"
-          aria-expanded="false"
-          type="button"
+        <app-btn
           (click)="isOpenOverlayAvatar = !isOpenOverlayAvatar"
           cdkOverlayOrigin
           #menuOverlay="cdkOverlayOrigin"
         >
           Configuración
-        </button>
+        </app-btn>
       </div>
     </div>
   </nav>

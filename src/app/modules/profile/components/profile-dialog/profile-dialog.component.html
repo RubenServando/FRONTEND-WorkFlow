@@ -1,0 +1,36 @@
+<div class="p-6 bg-white rounded shadow-lg">
+  <button
+    (click)="close()"
+    type="button"
+    class="absolute top-3 right-3 focus:outline-none p-2"
+  >
+    <fa-icon [icon]="faClose" class="text-gray-500"></fa-icon>
+  </button>
+
+  <form [formGroup]="updateUserForm" class="space-y-8" autocomplete="nope">
+    <div class="flex flex-col space-y-4">
+      <div class="flex flex-col w-full">
+        <div class="flex space-x-2">
+          <fa-icon
+            class="text-purple-600 self-center"
+            [icon]="faBars"
+          ></fa-icon>
+          <label class="text-lg font-semibold text-gray-600" for="email"
+            >Email</label
+          >
+        </div>
+        <input
+          id="email"
+          formControlName="email"
+          placeholder="Ingrese el nuevo email"
+          class="p-2 border-2 border-gray-200 rounded-md focus:outline-none focus:border-purple-500"
+          autocomplete="off"
+        />
+      </div>      
+    </div>
+
+    <div class="flex justify-center mt-4">
+      <app-btn (click)="updateProfile()">Aplicar cambios</app-btn>
+    </div>
+  </form>
+</div>

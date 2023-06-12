@@ -18,18 +18,22 @@
         </div>
         <div class="mb-4"></div>
         <div>
-          <app-btn color="light" class="shrink-0" (click)="deleteBoard()"
+          <app-btn
+            color="light"
+            class="shrink-0"
+            *ngIf="!hasLists"
+            (click)="deleteBoard()"
             >Borrar Tablero</app-btn
           >
         </div>
       </div>
       <div class="flex flex-wrap gap-10" cdkDropListGroup>
         <div
-        *ngFor="let list of lists; let i = index"
-        cdkDropList
-        [cdkDropListData]="list.cards"
-        [id]="list.list.lid"
-        (cdkDropListDropped)="drop($event)"
+          *ngFor="let list of lists; let i = index"
+          cdkDropList
+          [cdkDropListData]="list.cards"
+          [id]="list.list.lid"
+          (cdkDropListDropped)="drop($event)"
           class="min-w-[auto] max-w-[300px] mx-3 bg-purple-900 bg-opacity-30 py-3 px-4 text-sm uppercase font-medium rounded text-white h-auto min-h-[2.5rem] cursor-pointer"
         >
           {{ list.list.title }}
@@ -39,7 +43,7 @@
             </div>
           </button>
 
-          <button class="p-3" (click)="deleteList(list.list)">
+          <button class="p-3" *ngIf="list.cards.length === 0"  (click)="deleteList(list.list)">
             <fa-icon class="text-gray-800" [icon]="faTrashCan"></fa-icon>
           </button>
 

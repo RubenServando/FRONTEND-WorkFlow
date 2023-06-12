@@ -75,6 +75,10 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.getAllList();
   }
+  
+  get hasLists():boolean {
+    return this.lists && this.lists.length > 0;
+  }
 
   addList() {
     let urlSegments = this.route.snapshot.url;
