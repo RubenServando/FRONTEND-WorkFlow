@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { switchMap, tap } from 'rxjs/operators';
@@ -65,11 +65,13 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/user/reset`, { email });
   }
 
-  changePassword(token: string, newPassword: string) {
-    return this.http.post(`${this.apiUrl}/user/change-password`, {
-      token,
-      newPassword,
-    });
+  changePassword(uid: string, resetCode: string, password: string) {
+    const params = new HttpParams().set('uid', uid).set('resetCode', resetCode);
+    return this.http.put(
+      `${this.apiUrl}/user/reset`,
+      { password },
+      { params: params }
+    );
   }
 
   getProfile() {

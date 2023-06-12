@@ -27,7 +27,9 @@ export class RecoveryFormComponent {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
   showPassword = false;
-  token = '';
+  uid = '';
+  resetCode = '';
+  reset = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,9 +38,14 @@ export class RecoveryFormComponent {
     private router: Router
   ) {
     this.route.queryParamMap.subscribe(params => {
-      const token = params.get('token');
-      if (token) {
-        this.token = token;
+      const uid = params.get('uid');
+      const resetCode = params.get('resetCode');
+      const reset = params.get('reset');
+
+      if (uid && resetCode && reset && reset == "true") {
+        this.uid = uid
+        this.resetCode = resetCode
+        this.reset = reset
       } else {
         this.router.navigate(['/login']);
       }
@@ -49,7 +56,10 @@ export class RecoveryFormComponent {
     if (this.form.valid) {
       const { newPassword } = this.form.getRawValue();
       this.status = 'loading';
-      this.authService.changePassword(this.token, newPassword)
+      console.log(this.uid)
+      console.log(this.resetCode)
+      console.log(newPassword)
+      this.authService.changePassword(this.uid, this.resetCode, newPassword)
       .subscribe({
         next: () => {
           this.status = 'success';
