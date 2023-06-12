@@ -1,37 +1,38 @@
-<div class="p-6 bg-gray-100 relative rounded shadow">
+<div class="p-6 bg-gray-100 relative rounded-lg shadow-lg transform transition-all ease-in-out duration-500">
   <button
     (click)="close()"
     type="button"
-    class="absolute top-3 right-3 focus:outline-none p-2"
+    class="absolute top-3 right-3 focus:outline-none p-2 transition-colors duration-200 hover:text-gray-500"
   >
     <fa-icon [icon]="faClose"></fa-icon>
   </button>
-  <div class="flex space-x-2 mb-5"></div>
-  <div class="flex w-full gap-4">
+  <div class="flex flex-col w-full gap-4 mt-8">
     <form [formGroup]="updateCardForm">
-      <div class="flex space-x-2 mb-5 w-4/6">
+      <div class="flex items-center space-x-2 mb-5">
         <fa-icon class="text-gray-800" [icon]="faBars"></fa-icon>
-        <label class="text-lg font-semibold text-gray-800">Nombre</label>
+        <label class="text-lg font-semibold text-gray-800" for="board-title">Nombre</label>
         <input
           id="board-title"
           formControlName="title"
           placeholder="Ingrese el nombre"
+          class="w-full px-4 py-2 border-2 border-gray-200 rounded-md focus:border-blue-500 focus:outline-none transition-colors duration-200"
         />
       </div>
-      <div class="flex w-full gap-4">
+      <div class="flex items-start space-x-2">
         <fa-icon class="text-gray-800" [icon]="faBars"></fa-icon>
-        <label class="text-lg font-semibold text-gray-800">Descripción</label>
+        <label class="text-lg font-semibold text-gray-800" for="board-description">Descripción</label>
         <textarea
           id="board-description"
           formControlName="description"
           rows="4"
           cols="30"
+          class="w-full px-4 py-2 border-2 border-gray-200 rounded-md focus:border-blue-500 focus:outline-none transition-colors duration-200"
         ></textarea>
       </div>
     </form>
   </div>
-  <div class="mb-5"></div>
-  <app-btn (click)="updateCard()">Actualizar</app-btn>
-  <div class="mb-5"></div>
-  <app-btn (click)="deleteCard()">Borrar</app-btn>
+  <div class="mt-10 flex flex-col space-y-2">
+    <app-btn class="w-full" (click)="updateCard()">Actualizar</app-btn>
+    <app-btn class="w-full" (click)="deleteCard()">Borrar</app-btn>
+  </div>
 </div>
