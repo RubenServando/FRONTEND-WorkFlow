@@ -1,4 +1,4 @@
-<div *ngIf="!showRegister">
+<div class="relative z-10" *ngIf="!showRegister">
   <h1
     class="text-center font-medium text-pink-900 opacity-70 text-lg mt-5 ml-1 uppercase cursor-default py-2"
   >
@@ -135,44 +135,3 @@
     </div>
   </form>
 </div>
-
-<!-- BLOQUE PARA COMPROBAR EN UN REGISTRO SI EL EMAIL YA EXISTE -> CREAR UN ENDPOINT IS AVAILABLE
-  
-<div *ngIf="showRegister">
-  <h1 class="text-center font-bold py-2 text-gray-700">Introduce tus datos</h1>
-  <form [formGroup]="formUser" novalidate class="space-y-4" (ngSubmit)="validateUser()">
-    <div>
-      <div class="relative">
-        <input
-          formControlName="email"
-          placeholder="Enter email"
-          type="email"
-          name="email"
-          autocomplete="off"
-          class="w-full rounded bg-gray-100 border-gray-300 border-2"
-        />
-      </div>
-      <div *ngIf="formUser.controls.email.touched && formUser.controls.email.invalid">
-        <p
-          *ngIf="formUser.controls.email.hasError('required')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
-        >
-          Este campo es obligatorio
-        </p>
-        <p
-          *ngIf="formUser.controls.email.hasError('email')"
-          class="font-medium text-gray-400 text-xs mt-1 ml-1"
-        >
-          Este campo debe ser un email
-        </p>
-      </div>
-    </div>
-
-    <div>
-      <app-btn typeBtn="submit" color="success" [loading]="statusUser === 'loading'"
-        >Continuar</app-btn
-      >
-    </div>
-  </form>
-</div>
--->
